@@ -54,7 +54,7 @@ export function CTA() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-900 w-full group-hover:shadow-lg transition-all duration-300"
+                className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300"
               >
                 Nous contacter
                 <ArrowRight className="w-5 h-5 ml-2" />

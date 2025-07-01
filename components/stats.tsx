@@ -16,7 +16,7 @@ export function Stats() {
     },
     {
       icon: Users,
-      value: "10+",
+      value: "20+",
       label: "Années d'expérience",
       description: "Dans le recrutement spécialisé",
     },

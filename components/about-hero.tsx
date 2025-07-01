@@ -36,7 +36,7 @@ export function AboutHero() {
         <p
           className={`text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          Plus de 10 ans d'expertise dans le recrutement de talents commerciaux et managériaux
+          Plus de 20 ans d'expertise dans le recrutement de talents commerciaux et managériaux
         </p>
 
         <div
