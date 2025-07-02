@@ -13,11 +13,11 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Header />
       <Hero />
-      <AnimatedSection>
-        <Stats />
-      </AnimatedSection>
       <AnimatedSection delay={200}>
         <Services />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Stats />
       </AnimatedSection>
       <AnimatedSection delay={400}>
         <About />

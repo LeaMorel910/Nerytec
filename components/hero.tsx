@@ -300,19 +300,19 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up">
-          Recrutement de
+        <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up">
+          Le spécialiste du Recrutement
           <span className="block text-black pb-2">
-            Managers, Dirigeant
+            De Sales - Managers - Directeurs - dirigeants
           </span>
-          <span className="block text-3xl md:text-5xl lg:text-6xl">et Sales</span>
         </h1>
 
         <p
           className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up"
           style={{ animationDelay: "0.3s" }}
         >
-          Cabinet spécialisé dans le recrutement de sales manager et dirigeants pour les ESN
+          Le spécialiste du secteur des ESN et société de conseil en technologies
+
         </p>
 
         <div

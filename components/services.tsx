@@ -5,27 +5,47 @@ export function Services() {
   const services = [
     {
       icon: Briefcase,
-      title: "Recrutement de Managers",
+      title: "Management Commercial",
       description: "Identification et placement de profils managériaux expérimentés",
-      features: ["Directeurs commerciaux", "Managers d'équipes", "Responsables grands comptes", "Chefs de secteur"],
+      features: [
+        "Directeur commercial",
+        "Global Account Manager",
+        "Branch Manager",
+        "Account Executive"
+      ],
     },
     {
       icon: Target,
-      title: "Dirigeants Commerciaux",
-      description: "Recrutement de profils de direction commerciale de haut niveau",
-      features: ["Directeurs généraux", "VP Sales", "Directeurs de filiale", "Country managers"],
+      title: "Direction Générale",
+      description: "Recrutement de profils de direction de haut niveau",
+      features: [
+        "Directeur Général",
+        "Directeur des opérations",
+        "Practice Manager",
+        "Directeur du delivery"
+      ],
     },
     {
       icon: Users,
       title: "Spécialisation ESN",
       description: "Expertise dédiée aux Entreprises de Services Numériques",
-      features: ["Connaissance du secteur", "Réseau spécialisé", "Approche consultative", "Suivi personnalisé"],
+      features: [
+        "Directeur des engagements",
+        "Directeur de projet",
+        "Bid Manager",
+        "Suivi personnalisé"
+      ],
     },
     {
       icon: Zap,
       title: "Conseil en Ingénierie",
       description: "Recrutement pour les cabinets de conseil technique",
-      features: ["Profils techniques", "Business developers", "Consultants seniors", "Directeurs de BU"],
+      features: [
+        "Profils techniques",
+        "Business developers",
+        "Consultants seniors",
+        "Directeurs de BU"
+      ],
     },
   ]
 
@@ -33,10 +53,9 @@ export function Services() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos domaines d'expertise</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nerytec Consulting Spécialiste  du recrutements de profils :</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Spécialisés dans le recrutement de profils commerciaux et managériaux pour les ESN et cabinets de conseil en
-            ingénierie
+            Une expertise reconnue - une connaissance approfondie du secteur du conseil  (Entreprise de Service Numérique  – Société de conseil en technologies)
           </p>
         </div>
 
