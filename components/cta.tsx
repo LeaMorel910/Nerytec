@@ -1,6 +1,7 @@
 import { ArrowRight, Users, Building } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
 
 export function CTA() {
   return (
@@ -31,13 +32,15 @@ export function CTA() {
                 Découvrez nos opportunités exclusives et bénéficiez d'un accompagnement personnalisé dans votre
                 recherche d'emploi.
               </p>
-              <Button
-                size="lg"
-                className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300"
-              >
-                Voir les opportunités
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link href="http://localhost:3000/jobs">
+                <Button
+                  size="lg"
+                  className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300"
+                >
+                  Voir les opportunités
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
             </CardContent>
           </Card>
 
@@ -51,14 +54,16 @@ export function CTA() {
               <p className="text-blue-100 mb-6 leading-relaxed">
                 Confiez-nous vos recrutements et accédez à notre réseau de talents commerciaux et managériaux qualifiés.
               </p>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300"
-              >
-                Nous contacter
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link href="http://localhost:3000/recruit">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300"
+                >
+                  Nous contacter
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>

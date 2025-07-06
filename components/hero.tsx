@@ -3,6 +3,7 @@
 import { ArrowRight, Briefcase, Lightbulb } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
+import Link from "next/link"
 
 interface AnimationElement {
   id: number;
@@ -319,22 +320,26 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-pulse-float"
-          >
-            <Briefcase className="w-5 h-5 mr-2" />
-            Je veux un job de rêve !
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg font-semibold backdrop-blur-sm bg-white/50 hover:scale-105 transition-all duration-300 animate-pulse-float"
-          >
-            <Lightbulb className="w-5 h-5 mr-2" />
-            Je veux une pépite !
-          </Button>
+          <Link href="http://localhost:3000/jobs">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-pulse-float"
+            >
+              <Briefcase className="w-5 h-5 mr-2" />
+              Je veux un job de rêve !
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </Link>
+          <Link href="http://localhost:3000/recruit">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg font-semibold backdrop-blur-sm bg-white/50 hover:scale-105 transition-all duration-300 animate-pulse-float"
+            >
+              <Lightbulb className="w-5 h-5 mr-2" />
+              Je veux une pépite !
+            </Button>
+          </Link>
         </div>
 
         {/* Trust indicators */}

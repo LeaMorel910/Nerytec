@@ -10,37 +10,37 @@ export function Values() {
     {
       icon: Heart,
       title: "Proximité",
-      description: "Une relation de confiance basée sur l'écoute et l'accompagnement personnalisé",
+      description: "Une relation de confiance basée sur l'écoute et l'accompagnement personnalisé de nos clients et candidats",
       color: "from-red-500 to-pink-500",
     },
     {
       icon: Shield,
-      title: "Confidentialité",
-      description: "Respect total de la confidentialité de nos clients et candidats",
+      title: "Expertise",
+      description: "Hyperspécialisation sur le marché des ESN avec une connaissance très forte des professionnels du secteur et un réseau solide en IDF, Rhône-Alpes, Sud-Ouest, Sud Méditerranée, Nord-Ouest et Nord",
       color: "from-blue-500 to-cyan-500",
     },
     {
-      icon: Zap,
-      title: "Réactivité",
-      description: "Réponse rapide et suivi rigoureux de chaque mission de recrutement",
+      icon: Target,
+      title: "Approche prédictive",
+      description: "Notre spécificité unique : présenter des candidats qui correspondent à la culture, aux valeurs et au mode de fonctionnement attendu par le client, en prévision des besoins à venir",
       color: "from-yellow-500 to-orange-500",
     },
     {
       icon: Users,
-      title: "Expertise",
-      description: "Connaissance approfondie des métiers commerciaux et managériaux",
+      title: "Connaissance du marché",
+      description: "Plus de 15 ans d'expérience nous permettent de connaître nos clients aussi bien comme candidats que comme opérationnels-recruteurs",
       color: "from-green-500 to-teal-500",
     },
     {
-      icon: Target,
-      title: "Précision",
-      description: "Ciblage précis des profils en adéquation avec vos besoins",
+      icon: Award,
+      title: "Équilibre candidat-client",
+      description: "Notre considération pour le candidat est aussi haute que celle que nous donnons à notre client, particulièrement pertinent dans un marché de candidat",
       color: "from-purple-500 to-indigo-500",
     },
     {
-      icon: Award,
-      title: "Excellence",
-      description: "Recherche constante de l'excellence dans nos prestations",
+      icon: Zap,
+      title: "Réactivité",
+      description: "Réponse rapide et suivi personnalisé de chaque mission de recrutement",
       color: "from-amber-500 to-yellow-500",
     },
   ]
@@ -59,9 +59,8 @@ export function Values() {
           {values.map((value, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 group hover:-translate-y-2 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 group hover:-translate-y-2 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div

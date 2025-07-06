@@ -27,8 +27,8 @@ export function AboutHero() {
         <h1
           className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          Découvrir
-          <span className="block bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          Découvrir{" "}
+          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
             NERYTEC
           </span>
         </h1>
@@ -38,6 +38,8 @@ export function AboutHero() {
         >
           Plus de 20 ans d'expertise dans le recrutement de talents commerciaux et managériaux
         </p>
+
+
 
         <div
           className={`flex flex-wrap justify-center gap-8 text-gray-500 transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}

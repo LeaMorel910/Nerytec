@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Globe, Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -9,30 +10,26 @@ export function Footer() {
           {/* Logo et description */}
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <span className="text-xl font-bold">NERYTEC</span>
-                <span className="text-sm text-gray-400 block leading-none">CONSULTING</span>
-              </div>
+              <Image
+                src="/images/nerytec.jpeg"
+                alt="NERYTEC Consulting Logo"
+                width={100}
+                height={50}
+                className="h-auto"
+              />
             </Link>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               Cabinet de recrutement spécialisé dans les profils commerciaux et managériaux pour les ESN et sociétés de
-              conseil en ingénierie depuis plus de 10 ans.
+              conseil en ingénierie depuis plus de 20 ans.
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-allouch-177b961a/"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-200"
-              >
-                <Twitter className="w-5 h-5" />
               </a>
             </div>
           </div>

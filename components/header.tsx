@@ -15,7 +15,6 @@ export function Header() {
     { name: "Découvrir NERYTEC", href: "/about" },
     { name: "Vous cherchez un job ?", href: "/jobs" },
     { name: "Vous recrutez ?", href: "/recruit" },
-    { name: "Opportunités", href: "/opportunities" },
     { name: "Contact", href: "/contact" },
   ]
 
@@ -28,10 +27,9 @@ export function Header() {
             <Image
               src="/images/logo-nerytec-rs-002-1.jpeg"
               alt="NERYTEC Consulting Logo"
-              width={60} // Nouvelle largeur
-              height={200}
+              width={125} // Augmenter la largeur
+              height={60} // Augmenter la hauteur
               priority // Preload the logo as it's above the fold
-              className="h-auto" // Maintain aspect ratio
             />
           </Link>
 
@@ -50,19 +48,23 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-blue-500 text-blue-600 hover:bg-blue-50 bg-transparent"
-            >
-              Candidat
-            </Button>
-            <Button
-              size="sm"
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
-            >
-              Recruteur
-            </Button>
+            <Link href="/jobs">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-blue-500 text-blue-600 hover:bg-blue-50 bg-transparent"
+              >
+                Candidat
+              </Button>
+            </Link>
+            <Link href="/recruit">
+              <Button
+                size="sm"
+                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
+              >
+                Recruteur
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -85,12 +87,16 @@ export function Header() {
                   </Link>
                 ))}
                 <div className="flex flex-col space-y-2 pt-4 border-t">
-                  <Button variant="outline" size="sm" className="border-blue-500 text-blue-600 bg-transparent">
-                    Candidat
-                  </Button>
-                  <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-500">
-                    Recruteur
-                  </Button>
+                  <Link href="/jobs">
+                    <Button variant="outline" size="sm" className="border-blue-500 text-blue-600 bg-transparent">
+                      Candidat
+                    </Button>
+                  </Link>
+                  <Link href="/recruit">
+                    <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-500">
+                      Recruteur
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </SheetContent>

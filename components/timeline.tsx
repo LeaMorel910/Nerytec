@@ -8,27 +8,27 @@ export function Timeline() {
 
   const events = [
     {
-      year: "2014",
+      year: "2008",
       title: "Création de NERYTEC",
-      description: "Lancement du cabinet avec une vision claire : spécialisation dans le recrutement commercial",
+      description: "Frédéric ALLOUCH, diplômé d'une école de commerce et fort d'un premier parcours professionnel en tant que manager commercial dans une ESN, crée NERYTEC Consulting. Passionné par le recrutement et ayant acquis une connaissance du fonctionnement des sociétés de conseil, il développe une compréhension des différentes cultures des acteurs du marché.",
       icon: Calendar,
     },
     {
-      year: "2017",
-      title: "Expansion ESN",
-      description: "Développement de l'expertise dans le secteur des ESN et conseil en ingénierie",
+      year: "2012",
+      title: "Spécialisation ESN/SCT",
+      description: "Développement de l'expertise exclusive dans le secteur des ESN et sociétés de conseil en technologies, avec un focus sur les profils commerciaux, managériaux et techniques.",
       icon: Target,
     },
     {
-      year: "2020",
-      title: "500+ Placements",
-      description: "Franchissement du cap des 500 placements réussis avec un taux de satisfaction de 95%",
+      year: "2018",
+      title: "Approche prédictive",
+      description: "Mise en place de notre méthodologie prédictive unique : présentation de candidats en adéquation avec la culture et les valeurs du client, en anticipation des besoins à venir.",
       icon: Award,
     },
     {
       year: "2024",
       title: "Leadership reconnu",
-      description: "Référence incontournable pour le recrutement de managers et dirigeants commerciaux",
+      description: "Référence incontournable pour le recrutement de commerciaux, managers et dirigeants dans l'écosystème ESN/SCT.",
       icon: Users,
     },
   ]
