@@ -320,7 +320,7 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <Link href="http://localhost:3000/jobs">
+          <Link href="/jobs">
             <Button
               size="lg"
               className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-pulse-float"
@@ -329,7 +329,7 @@ export function Hero() {
               Je veux un job de rêve !
             </Button>
           </Link>
-          <Link href="http://localhost:3000/recruit">
+          <Link href="/recruit">
             <Button
               size="lg"
               variant="outline"
