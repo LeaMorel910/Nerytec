@@ -16,7 +16,7 @@ export function Values() {
     {
       icon: Shield,
       title: "Expertise",
-      description: "Hyperspécialisation sur le marché des ESN avec une connaissance très forte des professionnels du secteur et un réseau solide en IDF, Rhône-Alpes, Sud-Ouest, Sud Méditerranée, Nord-Ouest et Nord",
+      description: "Hyperspécialisation sur le marché des ESN avec une connaissance très forte des professionnels du secteur et un réseau solide en IDF, Rhône-Alpes, Sud-Ouest, Sud Méditerranée, Nord-Ouest, Nord et à l'international (Suisse, Belgique, Angleterre, Espagne, Dubaï).",
       color: "from-blue-500 to-cyan-500",
     },
     {
@@ -28,7 +28,7 @@ export function Values() {
     {
       icon: Users,
       title: "Connaissance du marché",
-      description: "Plus de 15 ans d'expérience nous permettent de connaître nos clients aussi bien comme candidats que comme opérationnels-recruteurs",
+      description: "Plus de 20 ans d'expérience nous permettent de connaître nos clients aussi bien comme candidats que comme opérationnels-recruteurs",
       color: "from-green-500 to-teal-500",
     },
     {
@@ -49,9 +49,9 @@ export function Values() {
     <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos valeurs</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir NERYTEC ?</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Les principes qui guident notre approche du recrutement
+            Depuis 2008, NERYTEC Consulting accompagne exclusivement les ESN et sociétés de conseil en technologies dans leurs recrutements de profils commerciaux, managériaux et techniques. Notre hyperspécialisation du marché nous permet de comprendre parfaitement vos enjeux et de vous proposer les meilleurs talents.
           </p>
         </div>
 

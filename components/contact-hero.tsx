@@ -37,9 +37,7 @@ export function ContactHero() {
           className={`text-lg text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           Vous recherchez un job ou vous vous posez des questions quant aux choix à faire pour construire votre carrière ?
-          <span className="block mt-2 text-xl text-gray-600">
-            Notre équipe est à votre disposition pour répondre à toutes vos questions
-          </span>
+          Notre équipe est à votre disposition pour répondre à toutes vos questions
         </p>
 
         <div

@@ -1,6 +1,6 @@
 "use client"
 
-import { Users } from "lucide-react"
+import { Users, Target, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
@@ -40,13 +40,22 @@ export function RecruitHero() {
           Confiez-nous vos recrutements et accédez à notre réseau de talents qualifiés
         </p>
 
-        <Button
-          size="lg"
-          className={`bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        <div
+          className={`flex flex-wrap justify-center gap-8 text-gray-500 transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <Users className="w-5 h-5 mr-2" />
-          Démarrer un recrutement
-        </Button>
+          <div className="flex items-center space-x-2">
+            <Users className="w-5 h-5 text-blue-500" />
+            <span className="font-medium">Réseau qualifié</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Target className="w-5 h-5 text-blue-500" />
+            <span className="font-medium">Matching prédictif</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Award className="w-5 h-5 text-blue-500" />
+            <span className="font-medium">Accompagnement sur-mesure</span>
+          </div>
+        </div>
       </div>
     </section>
   )

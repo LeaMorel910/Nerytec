@@ -304,7 +304,7 @@ export function Hero() {
         <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up">
           Le spécialiste du Recrutement
           <span className="block text-black pb-2">
-            De Sales - Managers - Directeurs - dirigeants
+            De Sales - Managers - Directeurs - Dirigeants
           </span>
         </h1>
 
@@ -323,18 +323,17 @@ export function Hero() {
           <Link href="http://localhost:3000/jobs">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-pulse-float"
+              className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-pulse-float"
             >
               <Briefcase className="w-5 h-5 mr-2" />
               Je veux un job de rêve !
-              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
           <Link href="http://localhost:3000/recruit">
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg font-semibold backdrop-blur-sm bg-white/50 hover:scale-105 transition-all duration-300 animate-pulse-float"
+              className="border-2 border-[#0078BE] text-[#0078BE] bg-white/50 hover:bg-white text-lg px-8 py-4 font-semibold backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:text-[#006bb0] animate-pulse-float"
             >
               <Lightbulb className="w-5 h-5 mr-2" />
               Je veux une pépite !

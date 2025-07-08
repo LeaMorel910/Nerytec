@@ -47,9 +47,8 @@ export function CareerAdvice() {
           {articles.map((article, index) => (
             <Card
               key={index}
-              className={`group hover:shadow-xl transition-all duration-500 border-0 shadow-lg hover:-translate-y-2 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`group hover:shadow-xl transition-all duration-500 border-0 shadow-lg hover:-translate-y-2 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <CardHeader>
@@ -62,7 +61,10 @@ export function CareerAdvice() {
                 <p className="text-gray-600 mb-4">{article.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">{article.readTime} de lecture</span>
-                  <Button variant="ghost" size="sm" className="text-green-600 hover:text-green-700">
+                  <Button
+                    size="sm"
+                    className="text-green-600 hover:text-green-700 bg-transparent shadow-none !focus:outline-none focus:ring-2 !focus:ring-green-50"
+                  >
                     Lire plus →
                   </Button>
                 </div>
@@ -72,12 +74,7 @@ export function CareerAdvice() {
         </div>
 
         <div className="text-center">
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600"
-          >
-            Voir tous les articles
-          </Button>
+
         </div>
       </div>
     </section>

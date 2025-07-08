@@ -11,31 +11,87 @@ export function JobCategories() {
   const categories = [
     {
       icon: Users,
-      title: "Management Commercial",
-      count: "25+ postes",
-      description: "Directeurs commerciaux, managers d'équipes",
+      title: "Directeur commercial",
+      description: "Responsables du développement commercial et de la stratégie de vente.",
       tags: ["CDI", "Cadre", "Paris"],
     },
     {
       icon: Target,
-      title: "Business Development",
-      count: "18+ postes",
-      description: "Développement commercial, grands comptes",
-      tags: ["CDI", "Expérience", "Remote"],
+      title: "Global Account Manager",
+      description: "Gestion des comptes stratégiques à l'international.",
+      tags: ["CDI", "International", "Expérience"],
     },
     {
       icon: Building,
-      title: "Direction Générale",
-      count: "12+ postes",
-      description: "Directeurs généraux, country managers",
-      tags: ["CDI", "Senior", "International"],
+      title: "Branch Manager",
+      description: "Direction d'agences et management d'équipes locales.",
+      tags: ["CDI", "Management", "France"],
     },
     {
       icon: TrendingUp,
-      title: "Consulting",
-      count: "30+ postes",
-      description: "Consultants seniors, chefs de projet",
-      tags: ["CDI/Freelance", "Tech", "Conseil"],
+      title: "Account Executive",
+      description: "Développement et gestion de portefeuilles clients.",
+      tags: ["CDI", "Commercial", "Remote"],
+    },
+    {
+      icon: Users,
+      title: "Directeur Général",
+      description: "Pilotage global de l'entreprise et définition de la vision stratégique.",
+      tags: ["CDI", "Top Management", "International"],
+    },
+    {
+      icon: Building,
+      title: "Directeur des opérations",
+      description: "Supervision des opérations et optimisation des processus internes.",
+      tags: ["CDI", "Opérations", "France"],
+    },
+    {
+      icon: TrendingUp,
+      title: "Practice Manager",
+      description: "Gestion de practices spécialisées et développement de l'expertise.",
+      tags: ["CDI", "Expertise", "Paris"],
+    },
+    {
+      icon: Target,
+      title: "Directeur du delivery",
+      description: "Responsable de la bonne exécution des projets et de la satisfaction client.",
+      tags: ["CDI", "Delivery", "France"],
+    },
+    {
+      icon: Users,
+      title: "Directeur des engagements",
+      description: "Gestion des engagements contractuels et relation client.",
+      tags: ["CDI", "Engagement", "Paris"],
+    },
+    {
+      icon: Building,
+      title: "Directeur de projet",
+      description: "Pilotage de projets stratégiques et management transversal.",
+      tags: ["CDI", "Projet", "Remote"],
+    },
+    {
+      icon: TrendingUp,
+      title: "Bid Manager",
+      description: "Gestion des réponses aux appels d'offres et coordination des équipes.",
+      tags: ["CDI", "Bid", "France"],
+    },
+    {
+      icon: Target,
+      title: "Business developers",
+      description: "Prospection et développement de nouveaux marchés.",
+      tags: ["CDI", "Développement", "Paris"],
+    },
+    {
+      icon: Users,
+      title: "Consultants seniors",
+      description: "Conseil et accompagnement de haut niveau auprès des clients.",
+      tags: ["CDI/Freelance", "Conseil", "Expert"],
+    },
+    {
+      icon: Building,
+      title: "Directeurs de BU",
+      description: "Direction de Business Units et pilotage de la performance.",
+      tags: ["CDI", "BU", "France"],
     },
   ]
 
@@ -51,9 +107,8 @@ export function JobCategories() {
           {categories.map((category, index) => (
             <Card
               key={index}
-              className={`group hover:shadow-xl transition-all duration-500 border-0 shadow-lg hover:-translate-y-2 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`group hover:shadow-xl transition-all duration-500 border-0 shadow-lg hover:-translate-y-2 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
               <CardHeader className="pb-4">
@@ -61,9 +116,6 @@ export function JobCategories() {
                   <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <category.icon className="w-7 h-7 text-white" />
                   </div>
-                  <Badge variant="secondary" className="bg-green-100 text-green-700">
-                    {category.count}
-                  </Badge>
                 </div>
                 <CardTitle className="text-xl font-bold text-gray-900">{category.title}</CardTitle>
               </CardHeader>

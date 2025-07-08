@@ -3,7 +3,6 @@ import { Footer } from "@/components/footer"
 import { AboutHero } from "@/components/about-hero"
 import { Timeline } from "@/components/timeline"
 import { Values } from "@/components/values"
-import { WhyChooseNerytec } from "@/components/why-choose-nerytec"
 
 export default function AboutPage() {
   return (
@@ -11,7 +10,6 @@ export default function AboutPage() {
       <Header />
       <AboutHero />
       <Timeline />
-      <WhyChooseNerytec />
       <Values />
 
       <Footer />

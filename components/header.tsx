@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image" // Import Image component
-import { Menu } from "lucide-react" // Globe icon removed
+import Image from "next/image"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
@@ -27,9 +27,9 @@ export function Header() {
             <Image
               src="/images/logo-nerytec-rs-002-1.jpeg"
               alt="NERYTEC Consulting Logo"
-              width={125} // Augmenter la largeur
-              height={60} // Augmenter la hauteur
-              priority // Preload the logo as it's above the fold
+              width={125}
+              height={60}
+              priority
             />
           </Link>
 
@@ -46,21 +46,21 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Desktop */}
           <div className="hidden lg:flex items-center space-x-4">
             <Link href="/jobs">
               <Button
-                variant="outline"
                 size="sm"
-                className="border-blue-500 text-blue-600 hover:bg-blue-50 bg-transparent"
+                className="bg-[#0078BE] hover:bg-[#006bb0] text-white shadow-md hover:shadow-lg transition-all duration-200"
               >
                 Candidat
               </Button>
             </Link>
             <Link href="/recruit">
               <Button
+                variant="outline"
                 size="sm"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
+                className="border-[#0078BE] text-[#0078BE] bg-white/80 hover:bg-white hover:text-[#006bb0] transition-all duration-200"
               >
                 Recruteur
               </Button>
@@ -88,12 +88,19 @@ export function Header() {
                 ))}
                 <div className="flex flex-col space-y-2 pt-4 border-t">
                   <Link href="/jobs">
-                    <Button variant="outline" size="sm" className="border-blue-500 text-blue-600 bg-transparent">
+                    <Button
+                      size="sm"
+                      className="bg-[#0078BE] hover:bg-[#006bb0] text-white shadow-md hover:shadow-lg transition-all duration-200 w-full"
+                    >
                       Candidat
                     </Button>
                   </Link>
                   <Link href="/recruit">
-                    <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-500">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-[#0078BE] text-[#0078BE] bg-white/80 hover:bg-white hover:text-[#006bb0] transition-all duration-200 w-full"
+                    >
                       Recruteur
                     </Button>
                   </Link>

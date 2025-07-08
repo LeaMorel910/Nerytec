@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
+import Link from "next/link"
+
+
 export function RecruitCTA() {
   const { ref, isVisible } = useScrollAnimation()
 
@@ -45,10 +48,11 @@ export function RecruitCTA() {
               </CardContent>
             </Card>
           </div>
-
-          <Button size="lg" className="bg-white text-purple-900 hover:bg-blue-50 px-8 py-4 text-lg font-semibold">
-            Démarrer maintenant
-          </Button>
+          <Link href="/contact" passHref legacyBehavior>
+            <Button size="lg" className="bg-white text-purple-900 hover:bg-blue-50 px-8 py-4 text-lg font-semibold">
+              Démarrer maintenant
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

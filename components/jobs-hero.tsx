@@ -1,6 +1,6 @@
 "use client"
 
-import { Search } from "lucide-react"
+import { Search, Briefcase, Smile } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
@@ -29,7 +29,7 @@ export function JobsHero() {
           className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           Vous cherchez
-          <span className="block bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent text-6xl font-bold text-center pb-2 mb-8">
             un nouveau job ?
           </span>
         </h1>
@@ -40,13 +40,22 @@ export function JobsHero() {
           Découvrez nos opportunités exclusives et bénéficiez d'un accompagnement personnalisé
         </p>
 
-        <Button
-          size="lg"
-          className={`bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        <div
+          className={`flex flex-wrap justify-center gap-8 text-gray-500 transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <Search className="w-5 h-5 mr-2" />
-          Rechercher un emploi
-        </Button>
+          <div className="flex items-center space-x-2">
+            <Search className="w-5 h-5 text-green-500" />
+            <span className="font-medium">Offres variées</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Briefcase className="w-5 h-5 text-green-500" />
+            <span className="font-medium">Postes qualifiés</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Smile className="w-5 h-5 text-green-500" />
+            <span className="font-medium">Accompagnement personnalisé</span>
+          </div>
+        </div>
       </div>
     </section>
   )
