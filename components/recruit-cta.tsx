@@ -12,7 +12,7 @@ export function RecruitCTA() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="py-20 bg-gradient-to-br from-purple-500 to-blue-500">
+    <section className="py-20 bg-[#0078BE]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={ref}
@@ -49,7 +49,7 @@ export function RecruitCTA() {
             </Card>
           </div>
           <Link href="/contact" passHref legacyBehavior>
-            <Button size="lg" className="bg-white text-purple-900 hover:bg-blue-50 px-8 py-4 text-lg font-semibold">
+            <Button size="lg" className="bg-white text-[#0078BE] hover:bg-[#006bb0] px-8 py-4 text-lg font-semibold transition-colors duration-200">
               Démarrer maintenant
             </Button>
           </Link>

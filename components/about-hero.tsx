@@ -28,7 +28,7 @@ export function AboutHero() {
           className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           Découvrir{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          <span className="bg-[#0078BE] bg-clip-text text-transparent">
             NERYTEC
           </span>
         </h1>

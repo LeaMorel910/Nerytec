@@ -42,7 +42,7 @@ export function Timeline() {
         </div>
 
         <div ref={ref} className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500" />
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-[#0078BE]" />
 
           {events.map((event, index) => (
             <div
@@ -51,7 +51,7 @@ export function Timeline() {
                 }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center z-10">
+              <div className="w-16 h-16 bg-[#0078BE] rounded-full flex items-center justify-center z-10">
                 <event.icon className="w-8 h-8 text-white" />
               </div>
 

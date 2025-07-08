@@ -80,7 +80,7 @@ export function Footer() {
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-blue-400 mt-1" />
-                <span className="text-gray-300">Paris, France</span>
+                <span className="text-gray-300">34 boulevard des italiens 75009, Paris, France</span>
               </li>
             </ul>
           </div>

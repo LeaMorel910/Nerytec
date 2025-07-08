@@ -30,7 +30,7 @@ export function ContactInfo() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-500 to-purple-500">
+    <section className="py-20 bg-[#0078BE]">
       <div ref={ref} className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -41,9 +41,8 @@ export function ContactInfo() {
             {contactDetails.map((item, index) => (
               <div
                 key={index}
-                className={`flex items-start space-x-4 transition-all duration-1000 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-                }`}
+                className={`flex items-start space-x-4 transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                  }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">

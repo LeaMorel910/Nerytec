@@ -29,7 +29,7 @@ export function RecruitHero() {
           className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           Vous
-          <span className="block bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+          <span className="block text-[#0078BE]">
             recrutez ?
           </span>
         </h1>

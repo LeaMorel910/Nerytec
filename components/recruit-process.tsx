@@ -45,17 +45,16 @@ export function RecruitProcess() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className={`text-center group transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`text-center group transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
               <div className="relative mb-8">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                <div className="w-20 h-20 bg-[#0078BE] rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
                   <step.icon className="w-10 h-10 text-white" />
                 </div>
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-sm font-bold text-purple-600">{step.step}</span>
+                  <span className="text-sm font-bold text-[#0078BE]">{step.step}</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>

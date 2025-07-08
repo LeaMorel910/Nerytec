@@ -7,10 +7,9 @@ import ClientLayout from "./ClientLayout"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "NERYTEC Consulting - Recrutement Managers & Dirigeants Commerciaux",
+  title: "NERYTEC Consulting",
   description:
-    "Cabinet spécialisé dans le recrutement de profils commerciaux et managériaux pour les ESN et sociétés de Conseil en Ingénierie",
-    generator: 'v0.dev'
+    "Cabinet spécialisé dans le recrutement De Sales - Managers - Directeurs - Dirigeants pour les ESN et sociétés de Conseil en technologies",
 }
 
 export default function RootLayout({
