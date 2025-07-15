@@ -10,17 +10,12 @@ export function ContactInfo() {
     {
       icon: MapPin,
       title: "Adresse",
-      details: ["Paris, France", "Île-de-France"],
-    },
-    {
-      icon: Phone,
-      title: "Téléphone",
-      details: ["+33 1 23 45 67 89", "Du lundi au vendredi"],
+      details: ["34 boulevard des italiens 75009", "Paris, France"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["contact@nerytec.com", "Réponse sous 24h"],
+      details: ["recrutement@nerytec.com", "Réponse sous 24h"],
     },
     {
       icon: Clock,

@@ -12,28 +12,28 @@ export function ProcessSection() {
             number: "1",
             title: "Entretien Conseil",
             description: "Analyse de votre profil, vos aspirations et profilage de vos besoins/attentes",
-            color: "from-green-500 to-blue-500",
+            color: "bg-[#0078BE]",
         },
         {
             icon: Search,
             number: "2",
             title: "Recherche & Matching",
             description: "Mapping, recherche multi-sources dans notre réseau de 20+ ans et notre base de données ESN/SCT",
-            color: "from-green-500 to-blue-500",
+            color: "bg-[#0078BE]",
         },
         {
             icon: Users,
             number: "3",
             title: "Présentation & Suivi",
             description: "Présentation au client, préparation aux entretiens, plan d'action personnalisé",
-            color: "from-green-500 to-blue-500",
+            color: "bg-[#0078BE]",
         },
         {
             icon: CheckCircle,
             number: "4",
             title: "Intégration",
             description: "Suivi post-embauche, appels réguliers, déjeuners de suivi pour assurer votre réussite",
-            color: "from-green-500 to-blue-500",
+            color: "bg-[#0078BE]",
         },
     ]
 
@@ -61,7 +61,7 @@ export function ProcessSection() {
                             </div>
 
                             <div
-                                className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                                className={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                             >
                                 <step.icon className="w-8 h-8 text-white" />
                             </div>

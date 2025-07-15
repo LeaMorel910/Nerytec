@@ -22,7 +22,7 @@ export function Stats() {
     },
     {
       icon: Award,
-      value: "95%",
+      value: "96%",
       label: "Taux de satisfaction",
       description: "Clients et candidats satisfaits",
     },

@@ -21,10 +21,10 @@ export function FinalCtaSection() {
     }, [])
 
     return (
-        <section className="py-20 bg-gradient-to-br from-green-500 to-blue-500 relative overflow-hidden">
+        <section className="py-20 bg-[#0078BE] relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0">
-                <div className="absolute top-0 left-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl" />
+                <div className="absolute top-0 left-0 w-96 h-96 bg-[#0078BE]/10 rounded-full blur-3xl" />
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
 
                 {/* Floating stars */}

@@ -11,29 +11,61 @@ import React from "react"
 export function ContactForm() {
   const { ref, isVisible } = useScrollAnimation()
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
+  const [currentFormIndex, setCurrentFormIndex] = useState(0)
 
-  // On ne gère plus le state des champs, Getform s'occupe de tout
-  // On utilise un ref pour reset le formulaire si besoin
   const formRef = React.useRef<HTMLFormElement>(null)
+
+  // Liste de vos différents comptes Getform
+  const getformEndpoints = [
+    "https://getform.io/f/bvrynglb", // Compte 1 (actuel)
+    "https://getform.io/f/xxxxxxxx", // Compte 2 (à créer)
+    "https://getform.io/f/yyyyyyyy", // Compte 3 (à créer)
+    "https://getform.io/f/zzzzzzzz", // Compte 4 (à créer)
+  ]
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus("sending")
+
     const form = e.target as HTMLFormElement
     const formData = new FormData(form)
-    try {
-      const res = await fetch("https://getform.io/f/bvrynglb", {
-        method: "POST",
-        body: formData,
-      })
-      if (res.ok) {
-        setStatus("success")
-        form.reset()
-      } else {
-        setStatus("error")
+
+    let success = false
+    let attempts = 0
+    const maxAttempts = getformEndpoints.length
+
+    // Essayer chaque endpoint jusqu'à ce qu'un fonctionne
+    while (!success && attempts < maxAttempts) {
+      try {
+        const currentEndpoint = getformEndpoints[currentFormIndex]
+        console.log(`Tentative avec le compte ${currentFormIndex + 1}`)
+
+        const res = await fetch(currentEndpoint, {
+          method: "POST",
+          body: formData,
+        })
+
+        if (res.ok) {
+          success = true
+          setStatus("success")
+          form.reset()
+          console.log(`Succès avec le compte ${currentFormIndex + 1}`)
+        } else {
+          // Si quota atteint (429) ou erreur, passer au suivant
+          console.log(`Échec avec le compte ${currentFormIndex + 1}, passage au suivant`)
+          setCurrentFormIndex((prev) => (prev + 1) % getformEndpoints.length)
+          attempts++
+        }
+      } catch (error) {
+        console.log(`Erreur avec le compte ${currentFormIndex + 1}:`, error)
+        setCurrentFormIndex((prev) => (prev + 1) % getformEndpoints.length)
+        attempts++
       }
-    } catch {
+    }
+
+    if (!success) {
       setStatus("error")
+      console.log("Tous les comptes ont échoué")
     }
   }
 
@@ -47,9 +79,6 @@ export function ContactForm() {
 
           <form
             ref={formRef}
-            action="https://getform.io/f/bvrynglb"
-            method="POST"
-            encType="multipart/form-data"
             onSubmit={handleSubmit}
             className="space-y-6"
             autoComplete="off"
@@ -102,8 +131,10 @@ export function ContactForm() {
                 className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
               />
             </div>
+
             {/* Honeypot anti-spam */}
             <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+
             <Button
               type="submit"
               size="lg"
@@ -113,6 +144,7 @@ export function ContactForm() {
               <Send className="w-5 h-5 mr-2" />
               {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
             </Button>
+
             {status === "success" && (
               <p className="text-green-600 text-center font-semibold mt-2">
                 Merci, votre message a bien été envoyé !
@@ -123,6 +155,11 @@ export function ContactForm() {
                 Une erreur est survenue. Merci de réessayer.
               </p>
             )}
+
+            {/* Indicateur de debug (à retirer en production) */}
+            {/* <p className="text-xs text-gray-500 text-center">
+              Compte actuel : {currentFormIndex + 1}/{getformEndpoints.length}
+            </p> */}
           </form>
         </div>
       </div>
