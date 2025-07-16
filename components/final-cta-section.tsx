@@ -57,7 +57,7 @@ export function FinalCtaSection() {
                     </h2>
 
                     <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-                        Bénéficiez de notre expertise ESN/SCT et de notre approche prédictive unique
+                        Bénéficiez de notre expertise ESN/SSII et de notre approche prédictive unique
                     </p>
 
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-8">
@@ -71,7 +71,7 @@ export function FinalCtaSection() {
                                 <div className="text-blue-100">Placements réussis</div>
                             </div>
                             <div>
-                                <div className="text-3xl font-bold text-white mb-2">95%</div>
+                                <div className="text-3xl font-bold text-white mb-2">96%</div>
                                 <div className="text-blue-100">Taux de satisfaction</div>
                             </div>
                         </div>
@@ -92,8 +92,13 @@ export function FinalCtaSection() {
                     </Link>
 
                     <p className="text-blue-100 text-sm mt-4">
-                        🎉 Rappel : 1000€ offerts quand nous vous trouvons votre job de rêve !
+                        🎉 Rappel : 500€ offerts quand nous vous trouvons votre job de rêve !
                     </p>
+                    <Link href="/gift-cards" passHref legacyBehavior>
+                        <a className="block mt-2 text-blue-100 text-sm italic underline hover:text-white transition-colors duration-200">
+                            En chèque cadeau de votre choix - conditions fournies sur demande
+                        </a>
+                    </Link>
                 </div>
             </div>
         </section>

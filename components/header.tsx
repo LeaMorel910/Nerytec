@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -75,6 +75,7 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">
+              <SheetTitle className="sr-only">Menu principal</SheetTitle>
               <div className="flex flex-col space-y-4 mt-8">
                 {navigation.map((item) => (
                   <Link

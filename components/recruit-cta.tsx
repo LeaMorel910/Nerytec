@@ -1,58 +1,58 @@
 "use client"
-
-import { Phone, Mail, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Phone, Mail } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-
 import Link from "next/link"
-
 
 export function RecruitCTA() {
   const { ref, isVisible } = useScrollAnimation()
 
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:recrutement@nerytec.com'
+  }
+
   return (
-    <section className="py-20 bg-[#0078BE]">
+    <section className="py-16 md:py-20 bg-[#0078BE]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={ref}
-          className={`text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Prêt à démarrer votre recrutement ?</h2>
-          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Prêt à démarrer votre recrutement ?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 md:mb-12 max-w-2xl mx-auto">
             Contactez-nous dès aujourd'hui pour discuter de vos besoins en recrutement
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <Phone className="w-8 h-8 text-blue-300 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">Appelez-nous</h3>
-                <p className="text-blue-100 text-sm">+33 1 23 45 67 89</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <Mail className="w-8 h-8 text-blue-300 mx-auto mb-4" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {/* Email Card */}
+            <Card
+              className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer group h-full"
+              onClick={handleEmailClick}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleEmailClick()}
+            >
+              <CardContent className="p-6 text-center h-full flex flex-col justify-center">
+                <Mail className="w-8 h-8 text-blue-300 mx-auto mb-4 group-hover:scale-110 transition-transform" />
                 <h3 className="text-lg font-semibold text-white mb-2">Écrivez-nous</h3>
-                <p className="text-blue-100 text-sm">contact@nerytec.com</p>
+                <p className="text-blue-100 text-sm">recrutement@nerytec.com</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <Calendar className="w-8 h-8 text-blue-300 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">Planifiez</h3>
-                <p className="text-blue-100 text-sm">Rendez-vous en ligne</p>
-              </CardContent>
-            </Card>
+            {/* Contact Form Card */}
+            <Link href="/contact" className="block h-full">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer group h-full">
+                <CardContent className="p-6 text-center h-full flex flex-col justify-center">
+                  <Phone className="w-8 h-8 text-blue-300 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-lg font-semibold text-white mb-2">Contactez-nous</h3>
+                  <p className="text-blue-100 text-sm">Accéder au formulaire</p>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
-          <Link href="/contact" passHref legacyBehavior>
-            <Button size="lg" className="bg-white text-[#0078BE] hover:bg-[#006bb0] px-8 py-4 text-lg font-semibold transition-colors duration-200">
-              Démarrer maintenant
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

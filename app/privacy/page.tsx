@@ -103,7 +103,7 @@ export default function PrivacyPage() {
                             <p>Vos données peuvent être transmises à :</p>
                             <ul className="list-disc pl-6 space-y-2">
                                 <li>Nos clients employeurs (avec votre accord)</li>
-                                <li>Nos prestataires techniques (hébergement, emailing)</li>
+                                <li>Nos prestataires techniques (hébergement, traitement des formulaires)</li>
                                 <li>Autorités compétentes (si obligation légale)</li>
                             </ul>
                             <p className="mt-4">
@@ -117,10 +117,25 @@ export default function PrivacyPage() {
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Outils et prestataires</h2>
                         <div className="bg-gray-50 rounded-lg p-6">
                             <ul className="space-y-2">
-                                <li><strong>Formulaires :</strong> GetForm (collecte des données contact)</li>
-                                <li><strong>Hébergement :</strong> Vercel (États-Unis)</li>
+                                <li><strong>Formulaires :</strong> GetForm (collecte et transmission des données de contact par email)</li>
+                                <li><strong>Hébergement :</strong> IONOS SE (Allemagne)</li>
                                 <li><strong>Emails :</strong> Prestataires conformes RGPD</li>
                             </ul>
+                        </div>
+                    </section>
+
+                    {/* Transferts de données */}
+                    <section>
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Transferts de données</h2>
+                        <div className="prose prose-gray max-w-none">
+                            <p>
+                                Vos données sont hébergées en Allemagne (IONOS SE) au sein de l'Union européenne.
+                                GetForm peut traiter temporairement vos données pour la transmission des
+                                formulaires - nous vérifions que leurs traitements respectent le RGPD.
+                            </p>
+                            <p>
+                                Aucun transfert de données n'est effectué vers des pays tiers en dehors de l'Union européenne.
+                            </p>
                         </div>
                     </section>
 
@@ -151,7 +166,7 @@ export default function PrivacyPage() {
 
                             <p>
                                 <strong>Pour exercer vos droits :</strong> Contactez-nous à l'adresse
-                                <a href="mailto:recrutement@nerytec.com" className="text-[#0078BE] hover:underline"> contact@nerytec.com</a>
+                                <a href="mailto:recrutement@nerytec.com" className="text-[#0078BE] hover:underline"> recrutement@nerytec.com</a>
                             </p>
                         </div>
                     </section>
@@ -170,6 +185,7 @@ export default function PrivacyPage() {
                                 <li>Accès limité aux données personnelles</li>
                                 <li>Sauvegardes sécurisées</li>
                                 <li>Mise à jour régulière des systèmes</li>
+                                <li>Contrôles d'accès stricts</li>
                             </ul>
                         </div>
                     </section>
@@ -179,8 +195,13 @@ export default function PrivacyPage() {
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Cookies</h2>
                         <div className="prose prose-gray max-w-none">
                             <p>
-                                Notre site utilise des cookies techniques nécessaires au fonctionnement du site.
-                                Aucun cookie de tracking ou publicitaire n'est utilisé sans votre consentement.
+                                Notre site n'utilise que des cookies techniques strictement nécessaires
+                                au fonctionnement du site. Aucun cookie de tracking, publicitaire ou
+                                analytique n'est utilisé.
+                            </p>
+                            <p>
+                                Les cookies techniques incluent les cookies de session et les cookies
+                                nécessaires au bon fonctionnement des formulaires de contact.
                             </p>
                         </div>
                     </section>
@@ -189,7 +210,7 @@ export default function PrivacyPage() {
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contact et réclamations</h2>
                         <div className="bg-gray-50 rounded-lg p-6">
-                            <p><strong>Pour toute question :</strong> contact@nerytec.com</p>
+                            <p><strong>Pour toute question :</strong> recrutement@nerytec.com</p>
                             <p><strong>Réclamation CNIL :</strong>
                                 <a href="https://www.cnil.fr/fr/plaintes" className="text-[#0078BE] hover:underline ml-1">
                                     https://www.cnil.fr/fr/plaintes

@@ -22,9 +22,9 @@ export function RecruitServices() {
     },
     {
       icon: Shield,
-      title: "Garantie qualité",
-      description: "Garantie de remplacement en cas de rupture précoce",
-      features: ["Garantie 3 mois", "Suivi post-intégration", "Accompagnement continu"],
+      title: "Suivi personnalisé",
+      description: "Accompagnement dédié durant toute la mission de recrutement",
+      features: ["Connaissance approfondie de votre secteur", "Suivi post-intégration", "Accompagnement continu"],
     },
   ]
 

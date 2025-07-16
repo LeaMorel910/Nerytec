@@ -16,28 +16,23 @@ export function FAQSection() {
     },
     {
       question: "❓ Quels types de postes proposez-vous ?",
-      answer:
-        "Nous nous spécialisons dans les postes commerciaux, managériaux et de direction générale pour les ESN et sociétés de conseil en technologies.",
+      answer: `Nous sommes spécialisés dans les fonctions suivantes : Avant-vente et Delivery- Sales et fonctions managériales - Postes de direction - Postes d'entrepreneurs. Nous avons accompagné avec succès des groupes et des dirigeants dans des enjeux financiers très importants. Nous sommes également en mesure de répondre à des besoins sur des fonctions de direction technique.`,
     },
     {
       question: "❓ Travaillez-vous avec des freelances ?",
-      answer:
-        "Principalement en CDI, mais nous avons également des missions freelance pour des profils seniors et spécialisés.",
+      answer: `À ce jour, le marché français n'est pas demandeur de managers dirigeants sales en mode freelance, en tout cas pas à un niveau industriel. Contrairement au marché des experts techniques ou experts métier qui voit sa population freelance s'accroître.`,
     },
     {
       question: "❓ Quelles sont vos zones géographiques ?",
-      answer:
-        "France entière (IDF, Rhône-Alpes, Sud-Ouest, Sud Med, Nord) et international (Suisse, Belgique, UK, Espagne, Dubaï).",
+      answer: `France : Toutes les grandes villes\nInternational : Canada, pays européens (Belgique, Suisse, Suède, Espagne, Allemagne, Italie)\nNous avons également eu la joie de réaliser des recrutements en Colombie et aux Émirats Arabes Unis.`,
     },
     {
       question: "❓ Comment garantissez-vous la confidentialité ?",
-      answer:
-        "Nous respectons strictement les règles déontologiques et ne contactons jamais votre employeur actuel sans votre accord préalable.",
+      answer: `Nous avons signé une charte d'engagement de confidentialité avec tous nos partenaires.`,
     },
     {
       question: "❓ Quels sont vos critères de sélection ?",
-      answer:
-        "Nous recherchons des profils expérimentés dans l'écosystème ESN/SCT avec une expertise commerciale, managériale ou technique avérée.",
+      answer: `L’Exérience en ESN/SCT  Expience en milieu industriels sur des fonctions de managers ou des fonctions Sales. nos clients nous demandent  des  que les candidats soietn titulaires de  formation BAC+5 Ecole de commerce  - Ecole d’ingénieur. `,
     },
   ]
 
@@ -57,9 +52,8 @@ export function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-500 hover:shadow-xl ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-500 hover:shadow-xl ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <button

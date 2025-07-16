@@ -32,7 +32,7 @@ export function CTA() {
                 Découvrez nos opportunités exclusives et bénéficiez d'un accompagnement personnalisé dans votre
                 recherche d'emploi.
               </p>
-              <Link href="http://localhost:3000/jobs">
+              <Link href="/jobs">
                 <Button
                   size="lg"
                   className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300"
@@ -54,10 +54,9 @@ export function CTA() {
               <p className="text-blue-100 mb-6 leading-relaxed">
                 Confiez-nous vos recrutements et accédez à notre réseau de talents commerciaux et managériaux qualifiés.
               </p>
-              <Link href="http://localhost:3000/recruit">
+              <Link href="/recruit">
                 <Button
                   size="lg"
-                  variant="outline"
                   className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300"
                 >
                   Nous contacter

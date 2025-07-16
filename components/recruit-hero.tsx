@@ -8,10 +8,10 @@ export function RecruitHero() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-blue-50">
       <div className="absolute inset-0">
         <div
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-purple-300/20 rounded-full blur-3xl animate-float"
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-200/20 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "0s" }}
         />
         <div
@@ -19,7 +19,7 @@ export function RecruitHero() {
           style={{ animationDelay: "3s" }}
         />
         <div
-          className="absolute top-1/2 left-1/2 w-24 h-24 bg-pink-300/20 rounded-full blur-3xl animate-float"
+          className="absolute top-1/2 left-1/2 w-24 h-24 bg-blue-400/20 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "6s" }}
         />
       </div>

@@ -44,19 +44,13 @@ export function ContactHero() {
           className={`flex flex-wrap justify-center gap-8 text-gray-500 transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="flex items-center space-x-2 relative group cursor-pointer">
-            <Phone className="w-5 h-5 text-teal-500" />
+            <Mail className="w-5 h-5 text-teal-500" />
             <span className="font-medium">Réponse rapide</span>
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
-              contact@votre-email.com
+              recrutement@nerytec.com
             </div>
           </div>
-          <div className="flex items-center space-x-2 relative group cursor-pointer">
-            <Mail className="w-5 h-5 text-teal-500" />
-            <span className="font-medium">Conseil personnalisé</span>
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
-              conseil@votre-email.com
-            </div>
-          </div>
+
           <div className="flex items-center space-x-2 relative group cursor-pointer">
             <MessageCircle className="w-5 h-5 text-teal-500" />
             <span className="font-medium">Écoute attentive</span>

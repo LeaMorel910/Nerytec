@@ -24,6 +24,8 @@ export default function LegalPage() {
                             <p><strong>SIREN :</strong> 503 258 626</p>
                             <p><strong>SIRET :</strong> 503 258 626 00012</p>
                             <p><strong>Code NAF/APE :</strong> 70.22Z</p>
+                            <p><strong>Capital social :</strong> 15 000,00 €</p>
+                            <p><strong>Numéro de TVA :</strong> FR87503258626</p>
                             <p><strong>Date de création :</strong> 2 avril 2008</p>
                             <p><strong>Siège social :</strong> 34 Boulevard des Italiens, 75009 Paris</p>
                             <p><strong>Immatriculation RNE :</strong> 26 mars 2008</p>
@@ -36,6 +38,8 @@ export default function LegalPage() {
                         <div className="bg-gray-50 rounded-lg p-6">
                             <p><strong>Email :</strong> recrutement@nerytec.com</p>
                             <p><strong>Adresse :</strong> 34 Boulevard des Italiens, 75009 Paris</p>
+                            {/* Ajoutez votre téléphone si vous en avez un professionnel */}
+                            {/* <p><strong>Téléphone :</strong> XX XX XX XX XX</p> */}
                         </div>
                     </section>
 
@@ -43,9 +47,9 @@ export default function LegalPage() {
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Hébergement</h2>
                         <div className="bg-gray-50 rounded-lg p-6">
-                            <p><strong>Hébergeur :</strong> Vercel Inc.</p>
-                            <p><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis</p>
-                            <p><strong>Site web :</strong> <a href="https://vercel.com" className="text-[#0078BE] hover:underline">https://vercel.com</a></p>
+                            <p><strong>Hébergeur :</strong> IONOS SE</p>
+                            <p><strong>Adresse :</strong> Elgendorfer Str. 57, 56410 Montabaur, Allemagne</p>
+                            <p><strong>Site web :</strong> <a href="https://www.ionos.fr" className="text-[#0078BE] hover:underline">https://www.ionos.fr</a></p>
                         </div>
                     </section>
 
