@@ -32,6 +32,37 @@ export default function LegalPage() {
                         </div>
                     </section>
 
+                    {/* Données personnelles et RGPD */}
+                    <section>
+                        <h2 className="text-2xl font-semibold text-black mb-4 ">Données personnelles et RGPD</h2>
+                        <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+                            <p>
+                                Dans le cadre de nos activités de conseil en recrutement, NERYTEC CONSULTING collecte et traite des données à caractère personnel.
+                            </p>
+                            <p className="font-semibold">Finalités du traitement :</p>
+                            <ul className="list-disc pl-6">
+                                <li>Mesurer vos aptitudes professionnelles</li>
+                                <li>Apprécier votre capacité à occuper les emplois proposés</li>
+                                <li>Maintenir votre profil dans notre vivier pour de futures opportunités</li>
+                            </ul>
+                            <p className="font-semibold">Consentement requis :</p>
+                            <p>
+                                Conformément au RGPD, nous avons besoin de votre consentement explicite pour conserver et traiter vos données personnelles.
+                            </p>
+                            <p className="font-semibold">Information importante :</p>
+                            <p>
+                                Sans obtention de votre consentement, votre profil sera supprimé de notre base de données dans un délai de 7 jours.
+                            </p>
+                            <p>
+                                Nous prenons soin de respecter la confidentialité de vos données. Pour connaître l'intégralité de vos droits et notre politique de protection des données, nous vous invitons à consulter notre <Link href="/privacy" className="text-[#0078BE] hover:underline font-semibold">politique de confidentialité</Link>.
+                            </p>
+                            <p className="font-semibold">Contact :</p>
+                            <p>
+                                Pour toute question relative au traitement de vos données : <a href="mailto:frederic.allouch@nerytec.com" className="text-[#0078BE] hover:underline">frederic.allouch@nerytec.com</a>
+                            </p>
+                        </div>
+                    </section>
+
                     {/* Contact */}
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contact</h2>
@@ -56,61 +87,69 @@ export default function LegalPage() {
                     {/* Propriété intellectuelle */}
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Propriété intellectuelle</h2>
-                        <div className="prose prose-gray max-w-none">
-                            <p>
-                                Le contenu du site NERYTEC CONSULTING (textes, images, graphismes, logo, icônes, sons, logiciels)
-                                est la propriété exclusive de NERYTEC CONSULTING, à l'exception des marques, logos ou contenus
-                                appartenant à d'autres sociétés partenaires ou tiers.
-                            </p>
-                            <p>
-                                Toute reproduction, distribution, modification, adaptation, retransmission ou publication,
-                                même partielle, de ces différents éléments est strictement interdite sans l'accord exprès
-                                par écrit de NERYTEC CONSULTING.
-                            </p>
+                        <div className="bg-gray-50 rounded-lg p-6">
+                            <div className="prose prose-gray max-w-none bg-transparent p-0">
+                                <p>
+                                    Le contenu du site NERYTEC CONSULTING (textes, images, graphismes, logo, icônes, sons, logiciels)
+                                    est la propriété exclusive de NERYTEC CONSULTING, à l'exception des marques, logos ou contenus
+                                    appartenant à d'autres sociétés partenaires ou tiers.
+                                </p>
+                                <p>
+                                    Toute reproduction, distribution, modification, adaptation, retransmission ou publication,
+                                    même partielle, de ces différents éléments est strictement interdite sans l'accord exprès
+                                    par écrit de NERYTEC CONSULTING.
+                                </p>
+                            </div>
                         </div>
                     </section>
 
                     {/* Logos et marques */}
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Logos et marques tierces</h2>
-                        <div className="prose prose-gray max-w-none">
-                            <p>
-                                Les logos et marques Amazon, Fnac, Decathlon, Ikea, Zalando, et Darty sont la propriété
-                                exclusive de leurs détenteurs respectifs. Leur utilisation sur ce site est uniquement
-                                à des fins d'information sur les récompenses disponibles dans le cadre de nos services
-                                de recrutement.
-                            </p>
-                            <p>
-                                NERYTEC CONSULTING est un cabinet de recrutement indépendant et n'est affilié à aucune
-                                de ces marques.
-                            </p>
+                        <div className="bg-gray-50 rounded-lg p-6">
+                            <div className="prose prose-gray max-w-none bg-transparent p-0">
+                                <p>
+                                    Les logos et marques Amazon, Fnac, Decathlon, Ikea, Zalando, et Darty sont la propriété
+                                    exclusive de leurs détenteurs respectifs. Leur utilisation sur ce site est uniquement
+                                    à des fins d'information sur les récompenses disponibles dans le cadre de nos services
+                                    de recrutement.
+                                </p>
+                                <p>
+                                    NERYTEC CONSULTING est un cabinet de recrutement indépendant et n'est affilié à aucune
+                                    de ces marques.
+                                </p>
+                            </div>
                         </div>
                     </section>
 
                     {/* Responsabilité */}
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Limitation de responsabilité</h2>
-                        <div className="prose prose-gray max-w-none">
-                            <p>
-                                NERYTEC CONSULTING s'efforce de fournir des informations exactes et à jour.
-                                Cependant, des erreurs ou omissions peuvent survenir. L'utilisateur devra donc
-                                s'assurer de l'exactitude des informations et signaler toute erreur.
-                            </p>
-                            <p>
-                                NERYTEC CONSULTING ne peut être tenue responsable des dommages directs et indirects
-                                causés au matériel de l'utilisateur lors de l'accès au site.
-                            </p>
+                        <div className="bg-gray-50 rounded-lg p-6">
+                            <div className="prose prose-gray max-w-none bg-transparent p-0">
+                                <p>
+                                    NERYTEC CONSULTING s'efforce de fournir des informations exactes et à jour.
+                                    Cependant, des erreurs ou omissions peuvent survenir. L'utilisateur devra donc
+                                    s'assurer de l'exactitude des informations et signaler toute erreur.
+                                </p>
+                                <p>
+                                    NERYTEC CONSULTING ne peut être tenue responsable des dommages directs et indirects
+                                    causés au matériel de l'utilisateur lors de l'accès au site.
+                                </p>
+                            </div>
                         </div>
                     </section>
 
                     {/* Droit applicable */}
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Droit applicable</h2>
-                        <div className="prose prose-gray max-w-none">
-                            <p>
-                                Le présent site et les présentes mentions légales sont régis par le droit français.
-                                En cas de litige, les tribunaux français seront seuls compétents.
-                            </p>
+                        <div className="bg-gray-50 rounded-lg p-6">
+                            <div className="prose prose-gray max-w-none bg-transparent p-0">
+                                <p>
+                                    Le présent site et les présentes mentions légales sont régis par le droit français.
+                                    En cas de litige, les tribunaux français seront seuls compétents.
+                                </p>
+                            </div>
                         </div>
                     </section>
 

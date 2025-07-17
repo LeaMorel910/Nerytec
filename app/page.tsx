@@ -25,9 +25,9 @@ export default function HomePage() {
       <AnimatedSection delay={100}>
         <Testimonials />
       </AnimatedSection>
-      <AnimatedSection delay={100}>
-        <CTA />
-      </AnimatedSection>
+
+      <CTA />
+
       <Footer />
     </div>
   )

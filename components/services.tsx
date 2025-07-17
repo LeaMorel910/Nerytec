@@ -1,4 +1,4 @@
-import { Briefcase, Users, Target, Zap, CheckCircle } from "lucide-react"
+import { Briefcase, Users, Target, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function Services() {
@@ -6,12 +6,14 @@ export function Services() {
     {
       icon: Briefcase,
       title: "Management Commercial",
-      description: "Identification et placement de profils managériaux expérimentés",
+      description: "Identification et sélection  de profils Sales managers  pertinents",
       features: [
         "Directeur commercial",
         "Global Account Manager",
         "Branch Manager",
-        "Account Executive"
+        "Account Executive",
+        "Business manager",
+        "Directeur commercial"
       ],
     },
     {
@@ -21,28 +23,20 @@ export function Services() {
       features: [
         "Directeur Général",
         "Directeur des opérations",
-        "Practice Manager",
-        "Directeur du delivery"
+        "Directeur des Ressources Humaines",
+        "Directeur Administratif et financier"
       ],
     },
     {
       icon: Users,
-      title: "Spécialisation ESN",
-      description: "Expertise dédiée aux Entreprises de Services Numériques",
+      title: "Spécialisation ESN & Conseil",
+      description: "Expertise dédiée aux Entreprises de Services Numériques- societes de conseil en ingenierie",
       features: [
         "Directeur des engagements",
         "Directeur de projet",
         "Bid Manager",
-      ],
-    },
-    {
-      icon: Zap,
-      title: "Conseil en Ingénierie",
-      description: "Recrutement pour les cabinets de conseil technique",
-      features: [
-        "Business developers",
-        "Consultants seniors",
-        "Directeurs de BU"
+        "Practice Manager",
+        "Directeur du delivery"
       ],
     },
   ]
@@ -56,8 +50,8 @@ export function Services() {
             Une expertise reconnue - une connaissance approfondie du secteur du conseil  (Entreprise de Service Numérique  – Société de conseil en technologies)
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Grille adaptative : 1 col mobile, 2 cols tablette, 3 cols desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Card
               key={index}

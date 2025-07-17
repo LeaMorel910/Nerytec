@@ -20,7 +20,7 @@ export default function PrivacyPage() {
                         <div className="bg-gray-50 rounded-lg p-6">
                             <p><strong>Société :</strong> NERYTEC CONSULTING</p>
                             <p><strong>Adresse :</strong> 34 Boulevard des Italiens, 75009 Paris</p>
-                            <p><strong>Email :</strong> recrutement@nerytec.com</p>
+                            <p><strong>Email :</strong> <a href="mailto:frederic.allouch@nerytec.com" className="text-[#0078BE] hover:underline">frederic.allouch@nerytec.com</a></p>
                             <p><strong>SIREN :</strong> 503 258 626</p>
                         </div>
                     </section>
@@ -166,7 +166,7 @@ export default function PrivacyPage() {
 
                             <p>
                                 <strong>Pour exercer vos droits :</strong> Contactez-nous à l'adresse
-                                <a href="mailto:recrutement@nerytec.com" className="text-[#0078BE] hover:underline"> recrutement@nerytec.com</a>
+                                <a href="mailto:frederic.allouch@nerytec.com" className="text-[#0078BE] hover:underline"> frederic.allouch@nerytec.com</a>
                             </p>
                         </div>
                     </section>
@@ -238,6 +238,14 @@ export default function PrivacyPage() {
                     >
                         Retour à l'accueil
                     </Link>
+                    <div className="mt-4">
+                        <Link
+                            href="/legal"
+                            className="inline-block px-6 py-3 bg-gray-200 hover:bg-gray-300 text-[#0078BE] rounded-lg font-semibold transition-colors duration-200 shadow-md"
+                        >
+                            Retour vers les mentions légales
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
