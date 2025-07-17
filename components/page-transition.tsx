@@ -3,13 +3,18 @@
 import type React from "react"
 
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [isLoading, setIsLoading] = useState(false)
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     setIsLoading(true)
     const timer = setTimeout(() => setIsLoading(false), 300)
     return () => clearTimeout(timer)

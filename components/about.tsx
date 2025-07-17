@@ -92,7 +92,7 @@ export function About() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-700">Satisfaction client</span>
-                    <span className="font-semibold text-blue-600">95%</span>
+                    <span className="font-semibold text-blue-600">96%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div className="bg-[#0078BE] h-2 rounded-full w-[95%]" />

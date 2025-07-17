@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useSearchParams } from "next/navigation"
 import { Send, User, Mail, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -69,14 +70,53 @@ export function ContactForm() {
     }
   }
 
+  const searchParams = useSearchParams();
+  type ContactType = "cv" | "actionnariat" | "coaching";
+  const typeParam = searchParams.get("type");
+  const type: ContactType =
+    typeParam === "actionnariat" || typeParam === "coaching" ? typeParam : "cv";
+
+  const typeConfigMap: Record<ContactType, {
+    title: string;
+    intro?: string;
+    subject: string;
+    messagePlaceholder: string;
+    showCV: boolean;
+  }> = {
+    cv: {
+      title: "Envoyez-nous un message",
+      intro: undefined,
+      subject: "Candidature / Envoi de CV",
+      messagePlaceholder: "Votre message",
+      showCV: true,
+    },
+    actionnariat: {
+      title: "Actionnariat & Participation",
+      intro: "Vous êtes un dirigeant et souhaitez prendre une participation avec des partenaires financiers ? Écrivez-nous en toute confidentialité.",
+      subject: "Actionnariat / Prise de participation",
+      messagePlaceholder: "Expliquez-nous votre projet ou votre besoin...",
+      showCV: false,
+    },
+    coaching: {
+      title: "Accompagnement & Coaching",
+      intro: "Boostez votre carrière avec l'appui d'un professionnel en réussite dans ces métiers.",
+      subject: "Demande d'accompagnement / coaching",
+      messagePlaceholder: "Décrivez votre besoin ou votre objectif...",
+      showCV: false,
+    },
+  };
+  const typeConfig = typeConfigMap[type];
+
   return (
-    <section className="py-20 bg-gray-50">
+    <section id="contact-form" className="py-20 bg-gray-50">
       <div ref={ref} className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Envoyez-nous un message</h2>
-
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">{typeConfig.title}</h2>
+          {typeConfig.intro && (
+            <p className="text-center text-gray-700 mb-8 text-base">{typeConfig.intro}</p>
+          )}
           <form
             ref={formRef}
             onSubmit={handleSubmit}
@@ -113,28 +153,30 @@ export function ContactForm() {
                 placeholder="Sujet"
                 className="pl-10"
                 required
+                value={typeConfig.subject}
+                readOnly
               />
             </div>
             <Textarea
               name="message"
-              placeholder="Votre message"
+              placeholder={typeConfig.messagePlaceholder}
               rows={6}
               required
             />
-            <div>
-              <label className="block text-sm font-medium text-blue-900 mb-1">CV (PDF, DOC, DOCX)</label>
-              <input
-                type="file"
-                name="cv"
-                accept=".pdf,.doc,.docx"
-                required
-                className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-              />
-            </div>
-
+            {typeConfig.showCV && (
+              <div>
+                <label className="block text-sm font-medium text-blue-900 mb-1">CV (PDF, DOC, DOCX)</label>
+                <input
+                  type="file"
+                  name="cv"
+                  accept=".pdf,.doc,.docx"
+                  required
+                  className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                />
+              </div>
+            )}
             {/* Honeypot anti-spam */}
             <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
-
             <Button
               type="submit"
               size="lg"
@@ -144,7 +186,6 @@ export function ContactForm() {
               <Send className="w-5 h-5 mr-2" />
               {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
             </Button>
-
             {status === "success" && (
               <p className="text-green-600 text-center font-semibold mt-2">
                 Merci, votre message a bien été envoyé !
@@ -155,11 +196,6 @@ export function ContactForm() {
                 Une erreur est survenue. Merci de réessayer.
               </p>
             )}
-
-            {/* Indicateur de debug (à retirer en production) */}
-            {/* <p className="text-xs text-gray-500 text-center">
-              Compte actuel : {currentFormIndex + 1}/{getformEndpoints.length}
-            </p> */}
           </form>
         </div>
       </div>

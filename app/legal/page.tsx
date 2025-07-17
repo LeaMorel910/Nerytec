@@ -58,7 +58,7 @@ export default function LegalPage() {
                             </p>
                             <p className="font-semibold">Contact :</p>
                             <p>
-                                Pour toute question relative au traitement de vos données : <a href="mailto:frederic.allouch@nerytec.com" className="text-[#0078BE] hover:underline">frederic.allouch@nerytec.com</a>
+                                Pour toute question relative au traitement de vos données : <a href="mailto:pdo@nerytec.com" className="text-[#0078BE] hover:underline">pdo@nerytec.com</a>
                             </p>
                         </div>
                     </section>
@@ -67,7 +67,7 @@ export default function LegalPage() {
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contact</h2>
                         <div className="bg-gray-50 rounded-lg p-6">
-                            <p><strong>Email :</strong> recrutement@nerytec.com</p>
+                            <p><strong>Email :</strong> <a href="mailto:pdo@nerytec.com" className="text-[#0078BE] hover:underline">pdo@nerytec.com</a></p>
                             <p><strong>Adresse :</strong> 34 Boulevard des Italiens, 75009 Paris</p>
                             {/* Ajoutez votre téléphone si vous en avez un professionnel */}
                             {/* <p><strong>Téléphone :</strong> XX XX XX XX XX</p> */}

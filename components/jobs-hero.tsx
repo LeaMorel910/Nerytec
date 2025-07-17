@@ -56,7 +56,7 @@ export function JobsHero() {
 
         <Button
           asChild
-          className="mt-6 bg-[#0078BE] hover:bg-[#005f99] text-white px-6 py-3 text-lg font-semibold rounded-xl shadow-lg transition-colors duration-200"
+          className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-glow backdrop-blur-sm"
         >
           <a href="/contact">
             Nous écrire en toute discrétion

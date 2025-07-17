@@ -5,20 +5,19 @@ export function Services() {
   const services = [
     {
       icon: Briefcase,
-      title: "Management Commercial",
+      title: "Management Commercial (H/F)",
       description: "Identification et sélection  de profils Sales managers  pertinents",
       features: [
         "Directeur commercial",
         "Global Account Manager",
         "Branch Manager",
         "Account Executive",
-        "Business manager",
-        "Directeur commercial"
+        "Business manager"
       ],
     },
     {
       icon: Target,
-      title: "Direction Générale",
+      title: "Direction Générale (H/F)",
       description: "Recrutement de profils de direction de haut niveau",
       features: [
         "Directeur Général",
@@ -29,7 +28,7 @@ export function Services() {
     },
     {
       icon: Users,
-      title: "Spécialisation ESN & Conseil",
+      title: "Spécialisation ESN & Conseil (H/F)",
       description: "Expertise dédiée aux Entreprises de Services Numériques- societes de conseil en ingenierie",
       features: [
         "Directeur des engagements",
