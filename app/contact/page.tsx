@@ -1,10 +1,9 @@
-"use client"
-
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ContactHero } from "@/components/contact-hero"
 import { ContactForm } from "@/components/contact-form"
 import { ContactInfo } from "@/components/contact-info"
+import { Suspense } from "react";
 
 export default function ContactPage() {
   return (
@@ -12,7 +11,9 @@ export default function ContactPage() {
       <Header />
       <ContactHero />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-        <ContactForm />
+        <Suspense>
+          <ContactForm />
+        </Suspense>
         <ContactInfo />
       </div>
       <Footer />
