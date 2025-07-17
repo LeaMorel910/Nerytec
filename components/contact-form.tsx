@@ -13,6 +13,7 @@ export function ContactForm() {
   const { ref, isVisible } = useScrollAnimation()
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
+  const [showCVUpload, setShowCVUpload] = useState(false)
 
   const formRef = React.useRef<HTMLFormElement>(null)
 
@@ -71,41 +72,44 @@ export function ContactForm() {
   }
 
   const searchParams = useSearchParams();
-  type ContactType = "cv" | "actionnariat" | "coaching";
+  type ContactType = "cv" | "actionnariat" | "coaching" | null;
   const typeParam = searchParams.get("type");
   const type: ContactType =
-    typeParam === "actionnariat" || typeParam === "coaching" ? typeParam : "cv";
+    typeParam === "actionnariat" || typeParam === "coaching" || typeParam === "cv" ? typeParam : null;
 
-  const typeConfigMap: Record<ContactType, {
+  const typeConfigMap: Record<string, {
     title: string;
     intro?: string;
-    subject: string;
+    subjectPlaceholder: string;
     messagePlaceholder: string;
-    showCV: boolean;
   }> = {
     cv: {
       title: "Envoyez-nous un message",
       intro: undefined,
-      subject: "Candidature / Envoi de CV",
+      subjectPlaceholder: "Candidature / Envoi de CV",
       messagePlaceholder: "Votre message",
-      showCV: true,
     },
     actionnariat: {
       title: "Actionnariat & Participation",
       intro: "Vous êtes un dirigeant et souhaitez prendre une participation avec des partenaires financiers ? Écrivez-nous en toute confidentialité.",
-      subject: "Actionnariat / Prise de participation",
+      subjectPlaceholder: "Actionnariat / Prise de participation",
       messagePlaceholder: "Expliquez-nous votre projet ou votre besoin...",
-      showCV: false,
     },
     coaching: {
       title: "Accompagnement & Coaching",
       intro: "Boostez votre carrière avec l'appui d'un professionnel en réussite dans ces métiers.",
-      subject: "Demande d'accompagnement / coaching",
+      subjectPlaceholder: "Demande d'accompagnement / coaching",
       messagePlaceholder: "Décrivez votre besoin ou votre objectif...",
-      showCV: false,
     },
+    default: {
+      title: "Envoyez-nous un message",
+      intro: undefined,
+      subjectPlaceholder: "Votre sujet",
+      messagePlaceholder: "Votre message",
+    }
   };
-  const typeConfig = typeConfigMap[type];
+
+  const typeConfig = type ? typeConfigMap[type] : typeConfigMap.default;
 
   return (
     <section id="contact-form" className="py-20 bg-gray-50">
@@ -150,11 +154,9 @@ export function ContactForm() {
               <Input
                 type="text"
                 name="subject"
-                placeholder="Sujet"
+                placeholder={typeConfig.subjectPlaceholder}
                 className="pl-10"
                 required
-                value={typeConfig.subject}
-                readOnly
               />
             </div>
             <Textarea
@@ -163,14 +165,25 @@ export function ContactForm() {
               rows={6}
               required
             />
-            {typeConfig.showCV && (
+            <div className="flex items-center space-x-3">
+              <input
+                type="checkbox"
+                id="cv-checkbox"
+                checked={showCVUpload}
+                onChange={(e) => setShowCVUpload(e.target.checked)}
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+              />
+              <label htmlFor="cv-checkbox" className="text-sm font-medium text-gray-700">
+                Joindre un CV (optionnel)
+              </label>
+            </div>
+            {showCVUpload && (
               <div>
                 <label className="block text-sm font-medium text-blue-900 mb-1">CV (PDF, DOC, DOCX)</label>
                 <input
                   type="file"
                   name="cv"
                   accept=".pdf,.doc,.docx"
-                  required
                   className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                 />
               </div>

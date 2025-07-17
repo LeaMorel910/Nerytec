@@ -2,6 +2,7 @@
 import { Search, Briefcase, Smile } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import Link from "next/link"
 
 export function JobsHero() {
   const { ref, isVisible } = useScrollAnimation()
@@ -58,9 +59,9 @@ export function JobsHero() {
           asChild
           className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-glow backdrop-blur-sm"
         >
-          <a href="/contact">
+          <Link href="/contact">
             Nous écrire en toute discrétion
-          </a>
+          </Link>
         </Button>
       </div>
     </section>
