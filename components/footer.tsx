@@ -72,11 +72,23 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">recrutement@nerytec.com</span>
+                <a
+                  href="mailto:recrutement@nerytec.com"
+                  className="text-gray-300 underline hover:text-blue-200 transition-colors"
+                >
+                  recrutement@nerytec.com
+                </a>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-blue-400 mt-1" />
-                <span className="text-gray-300">34 boulevard des italiens 75009, Paris, France</span>
+                <a
+                  href="https://maps.app.goo.gl/Y7utm8igG9hB5Jf67"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 underline hover:text-blue-200 transition-colors"
+                >
+                  34 boulevard des italiens 75009, Paris, France
+                </a>
               </li>
             </ul>
           </div>

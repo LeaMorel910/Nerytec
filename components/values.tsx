@@ -28,13 +28,13 @@ export function Values() {
     {
       icon: Users,
       title: "Connaissance du marché",
-      description: "Plus de 20 ans d'expérience nous permettent de connaître nos clients aussi bien comme candidats que comme opérationnels-recruteurs",
+      description: "Plus de 20 ans d'expérience nous permettent de connaître nos clients aussi bien comme candidats que comme clients et donneurs d'ordre.",
       color: "from-green-500 to-teal-500",
     },
     {
       icon: Award,
       title: "Équilibre candidat-client",
-      description: "Notre considération pour le candidat est aussi haute que celle que nous donnons à notre client, particulièrement pertinent dans un marché de candidat",
+      description: "Notre considération pour le candidat est aussi haute que celle que nous donnons à notre client.",
       color: "from-purple-500 to-indigo-500",
     },
     {
@@ -51,7 +51,7 @@ export function Values() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir NERYTEC ?</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Depuis 2008, NERYTEC Consulting accompagne exclusivement les ESN et sociétés de conseil en technologies dans leurs recrutements de profils commerciaux, managériaux et techniques. Notre hyperspécialisation du marché nous permet de comprendre parfaitement vos enjeux et de vous proposer les meilleurs talents.
+            Depuis 2005, NERYTEC Consulting accompagne exclusivement les ESN et sociétés de conseil en technologies dans leurs recrutements. Notre hyperspécialisation du marché nous permet de comprendre parfaitement vos enjeux et de vous proposer les meilleurs talents.
           </p>
         </div>
 

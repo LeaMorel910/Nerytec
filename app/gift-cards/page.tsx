@@ -41,7 +41,10 @@ export default function GiftCards() {
                 {/* En-tête avec contexte */}
                 <div className="text-center mb-8">
                     <h1 className="text-2xl md:text-3xl font-bold text-[#0078BE] mb-4">
-                        Nos récompenses clients
+
+
+                        Nos bons Cadeaux
+
                     </h1>
                     <p className="text-gray-600 text-sm md:text-base">
                         En tant que cabinet de recrutement, nous offrons des chèques cadeaux

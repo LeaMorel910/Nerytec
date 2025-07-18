@@ -103,7 +103,21 @@ export function Hero() {
               Une expertise reconnue dans le secteur du conseil – ESN & SCT
             </span>
             <span className="block text-gray-100 text-xl font-semibold drop-shadow-md">
-              cabinet de recrutement nouvel génération
+              <span className="relative inline-block">
+                {/* Coin haut gauche */}
+                <span className="absolute pointer-events-none" style={{ top: '-6px', left: '-6px' }}>
+                  <span className="absolute top-0 left-0 w-3 h-0.5 bg-gradient-to-r from-white to-transparent opacity-70 block"></span>
+                  <span className="absolute top-0 left-0 w-0.5 h-3 bg-gradient-to-b from-white to-transparent opacity-70 block"></span>
+                </span>
+
+                {/* Coin bas droite */}
+                <span className="absolute pointer-events-none" style={{ bottom: '-6px', right: '-6px' }}>
+                  <span className="absolute bottom-0 right-0 w-3 h-0.5 bg-gradient-to-l from-white to-transparent opacity-70 block"></span>
+                  <span className="absolute bottom-0 right-0 w-0.5 h-3 bg-gradient-to-t from-white to-transparent opacity-70 block"></span>
+                </span>
+
+                Cabinet de recrutement nouvelle génération
+              </span>
             </span>
           </h1>
         </div>

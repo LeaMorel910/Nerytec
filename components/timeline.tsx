@@ -8,27 +8,27 @@ export function Timeline() {
 
   const events = [
     {
-      year: "2008",
+      year: "2005",
       title: "Création de NERYTEC",
-      description: "Frédéric ALLOUCH, diplômé d'une école de commerce et fort d'un premier parcours professionnel en tant que manager commercial dans une ESN, crée NERYTEC Consulting. Passionné par le recrutement et ayant acquis une connaissance du fonctionnement des sociétés de conseil, il développe une compréhension des différentes cultures des acteurs du marché.",
+      description: "Frédéric ALLOUCH, diplômé d'une école de commerce et fort d'un premier parcours professionnel dans le business développement, crée NERYTEC Consulting. Passionné par l'approche humaine du recrutement et ayant acquis une connaissance du fonctionnement des métiers du service et des sociétés de conseil, il développe une compréhension des différentes cultures des acteurs du marché.",
       icon: Calendar,
     },
     {
       year: "2012",
       title: "Spécialisation ESN/SCT",
-      description: "Développement de l'expertise exclusive dans le secteur des ESN et sociétés de conseil en technologies, avec un focus sur les profils commerciaux, managériaux et techniques.",
+      description: "Développement de l'expertise exclusive dans le secteur des ESN et sociétés de conseil en technologies, avec un focus sur les profils à connotation Sales, Manager et Dirigeants.",
       icon: Target,
     },
     {
       year: "2018",
       title: "Approche prédictive",
-      description: "Mise en place de notre méthodologie prédictive unique : présentation de candidats en adéquation avec la culture et les valeurs du client, en anticipation des besoins à venir.",
+      description: "Mise en place de notre méthodologie prédictive unique : présentation de candidats en adéquation avec la culture et les valeurs du client, en anticipation de leurs besoins futurs. Anticipation des attentes des candidats en fonction de leur parcours.",
       icon: Award,
     },
     {
       year: "2024",
       title: "Leadership reconnu",
-      description: "Référence incontournable pour le recrutement de commerciaux, managers et dirigeants dans l'écosystème ESN/SCT.",
+      description: "Référence incontournable dans l'écosystème ESN/SCT - partenariat avec des fonds d'investissement et family offices.",
       icon: Users,
     },
   ]
@@ -38,7 +38,7 @@ export function Timeline() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Notre parcours</h2>
-          <p className="text-xl text-gray-600">20 ans d'évolution et de croissance</p>
+          <p className="text-xl text-gray-600">Plus de 20 ans d'expertise à votre service</p>
         </div>
 
         <div ref={ref} className="relative">

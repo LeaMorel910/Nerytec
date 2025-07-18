@@ -10,7 +10,7 @@ export function ContactInfo() {
     {
       icon: MapPin,
       title: "Adresse",
-      details: ["34 boulevard des italiens 75009", "Paris, France"],
+      details: ["34 boulevard des italiens 75009"],
     },
     {
       icon: Mail,
@@ -20,7 +20,7 @@ export function ContactInfo() {
     {
       icon: Clock,
       title: "Horaires",
-      details: ["9h00 - 18h00", "Lundi au Vendredi"],
+      details: ["8h00 - 20h00", "Lundi au Vendredi"],
     },
   ]
 
@@ -46,9 +46,31 @@ export function ContactInfo() {
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-1">{item.title}</h3>
                   {item.details.map((detail, detailIndex) => (
-                    <p key={detailIndex} className="text-blue-100">
-                      {detail}
-                    </p>
+                    item.title === "Adresse" && detailIndex === 0 ? (
+                      <p key={detailIndex} className="text-blue-100">
+                        <a
+                          href="https://maps.app.goo.gl/Y7utm8igG9hB5Jf67" // Remplacer par le lien court réel
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-blue-200 transition-colors"
+                        >
+                          {detail}
+                        </a>
+                      </p>
+                    ) : item.title === "Email" && detailIndex === 0 ? (
+                      <p key={detailIndex} className="text-blue-100">
+                        <a
+                          href={`mailto:${detail}`}
+                          className="underline hover:text-blue-200 transition-colors"
+                        >
+                          {detail}
+                        </a>
+                      </p>
+                    ) : (
+                      <p key={detailIndex} className="text-blue-100">
+                        {detail}
+                      </p>
+                    )
                   ))}
                 </div>
               </div>
