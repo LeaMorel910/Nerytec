@@ -1,11 +1,32 @@
 "use client"
-import { Search, Briefcase, Smile } from "lucide-react"
+import { Search, Briefcase, Smile, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { useIsMobile } from "@/hooks/use-mobile"
 import Link from "next/link"
 
 export function JobsHero() {
   const { ref, isVisible } = useScrollAnimation()
+  const isMobile = useIsMobile()
+
+  const scrollToNextSection = () => {
+    const startPosition = window.scrollY
+    const targetDistance = 700
+    const duration = 800 // 800ms d'animation
+    const startTime = performance.now()
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+      const easedProgress = easeInOutQuad(progress)
+      const currentPosition = startPosition + (targetDistance * easedProgress)
+      window.scrollTo(0, currentPosition)
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll)
+      }
+    }
+    requestAnimationFrame(animateScroll)
+  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-blue-50">
@@ -57,12 +78,22 @@ export function JobsHero() {
 
         <Button
           asChild
-          className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-glow backdrop-blur-sm"
+          className={`bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-glow backdrop-blur-sm transition-all duration-1000 delay-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <Link href="/contact">
             Nous écrire en toute discrétion
           </Link>
         </Button>
+      </div>
+      {/* Indicateur de scroll animé - Cliquable */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-24 lg:bottom-28 z-30 cursor-pointer group"
+        onClick={scrollToNextSection}
+      >
+        <ChevronDown
+          className={`w-6 h-6 md:w-8 md:h-8 text-[#0078BE] animate-bounce transition-all duration-1000 delay-[800ms] group-hover:scale-110 group-hover:opacity-90 group-hover:translate-y-1 ${isVisible ? "opacity-70 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+        />
       </div>
     </section>
   )

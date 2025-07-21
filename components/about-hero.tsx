@@ -1,10 +1,32 @@
 "use client"
 
-import { Users, Target, Award } from "lucide-react"
+import { Users, Target, Award, ChevronDown } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { useIsMobile } from "@/hooks/use-mobile"
+import React from "react"
 
 export function AboutHero() {
   const { ref, isVisible } = useScrollAnimation()
+  const isMobile = useIsMobile()
+
+  const scrollToNextSection = () => {
+    const startPosition = window.scrollY
+    const targetDistance = 700
+    const duration = 800 // 800ms d'animation
+    const startTime = performance.now()
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+      const easedProgress = easeInOutQuad(progress)
+      const currentPosition = startPosition + (targetDistance * easedProgress)
+      window.scrollTo(0, currentPosition)
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll)
+      }
+    }
+    requestAnimationFrame(animateScroll)
+  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-blue-50">
@@ -57,6 +79,16 @@ export function AboutHero() {
             <span className="font-medium">Résultats prouvés</span>
           </div>
         </div>
+      </div>
+      {/* Indicateur de scroll animé - Cliquable */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-24 lg:bottom-28 z-30 cursor-pointer group"
+        onClick={scrollToNextSection}
+      >
+        <ChevronDown
+          className={`w-6 h-6 md:w-8 md:h-8 text-[#0078BE] animate-bounce transition-all duration-1000 delay-[800ms] group-hover:scale-110 group-hover:opacity-90 group-hover:translate-y-1 ${isVisible ? "opacity-70 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+        />
       </div>
     </section>
   )

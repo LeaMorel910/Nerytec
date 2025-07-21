@@ -100,22 +100,27 @@ export function ProcessSection() {
                 </div>
 
                 {/* Grille desktop/tablette */}
-                <div ref={ref} className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div ref={ref} className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
                     {steps.map((step, index) => (
                         <div
                             key={index}
-                            className={`group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-white/20 hover:-translate-y-2 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                            style={{ transitionDelay: `${index * 200}ms` }}
+                            className={`${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                            style={{
+                                transition: "opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1)",
+                                transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
+                            }}
                         >
-                            {/* Step number badge stylé */}
-                            <div className="absolute -top-3 -right-3 bg-blue-600 text-white text-sm w-6 h-6 flex items-center justify-center rounded-full font-bold shadow-md">
-                                {step.number}
+                            <div className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full flex flex-col min-h-[200px]">
+                                {/* Step number badge stylé */}
+                                <div className="absolute -top-3 -right-3 bg-blue-600 text-white text-sm w-6 h-6 flex items-center justify-center rounded-full font-bold shadow-md">
+                                    {step.number}
+                                </div>
+                                <div className={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                                    <step.icon className="w-8 h-8 text-white" />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                                <p className="text-gray-600 leading-relaxed mt-0">{step.description}</p>
                             </div>
-                            <div className={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                                <step.icon className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                            <p className="text-gray-600 leading-relaxed">{step.description}</p>
                         </div>
                     ))}
                 </div>
