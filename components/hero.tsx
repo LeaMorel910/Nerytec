@@ -26,46 +26,37 @@ export function Hero() {
           }
         }
 
-        @keyframes scroll-bounce {
+        @keyframes pulse-subtle {
           0%, 100% {
-            transform: translateY(0);
+            opacity: 0.7;
+            transform: scale(1);
           }
           50% {
-            transform: translateY(4px);
-          }
-        }
-
-        @keyframes sparkle {
-          0%, 100% {
-            transform: scale(0) rotate(0deg);
-            opacity: 0;
-          }
-          50% {
-            transform: scale(1) rotate(180deg);
             opacity: 1;
-          }
-        }
-
-        @keyframes pulse-glow {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-          }
-          50% {
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            transform: scale(1.15);
           }
         }
 
         .animate-fade-in-up {
-          animation: fadeInUp 1s ease-out;
+          animation: fadeInUp 0.5s cubic-bezier(0.4,0,0.2,1) both;
         }
-        .animate-scroll-bounce {
-          animation: scroll-bounce 2s ease-in-out infinite;
+        .animate-fade-in-up-stagger-1 {
+          animation-delay: 0.1s;
         }
-        .animate-sparkle {
-          animation: sparkle 3s ease-in-out infinite;
+        .animate-fade-in-up-stagger-2 {
+          animation-delay: 0.3s;
         }
-        .animate-pulse-glow {
-          animation: pulse-glow 2s ease-in-out infinite;
+        .animate-fade-in-up-stagger-3 {
+          animation-delay: 0.5s;
+        }
+        .pulse-dot {
+          animation: pulse-subtle 1.2s cubic-bezier(0.4,0,0.2,1) infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-fade-in-up,
+          .pulse-dot {
+            animation: none !important;
+          }
         }
       `}</style>
 
@@ -94,42 +85,28 @@ export function Hero() {
       <div className="absolute inset-0 bg-blue-900/10" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transform scale-95">
         {/* Conteneur avec fond semi-transparent pour le texte principal */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-8 border border-white/20 mt-6 sm:mt-12">
-          <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 mb-0 leading-tight animate-fade-in-up drop-shadow-lg">
+        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-8 border border-white/20 mt-6 sm:mt-12 animate-fade-in-up animate-fade-in-up-stagger-1">
+          <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 mb-0 leading-tight drop-shadow-lg">
             <span className="text-[#0078BE] drop-shadow-2xl">NERYTEC</span> <span className="font-normal text-white">CONSULTING</span>
             <span className="block text-white pb-6 drop-shadow-md">
               Une expertise reconnue dans le secteur du conseil – ESN & SCT
             </span>
-            <span className="block text-gray-100 text-xl font-semibold drop-shadow-md">
-              <span className="relative inline-block">
-                {/* Coin haut gauche */}
-                <span className="absolute pointer-events-none" style={{ top: '-6px', left: '-6px' }}>
-                  <span className="absolute top-0 left-0 w-3 h-0.5 bg-gradient-to-r from-white to-transparent opacity-70 block"></span>
-                  <span className="absolute top-0 left-0 w-0.5 h-3 bg-gradient-to-b from-white to-transparent opacity-70 block"></span>
-                </span>
-
-                {/* Coin bas droite */}
-                <span className="absolute pointer-events-none" style={{ bottom: '-6px', right: '-6px' }}>
-                  <span className="absolute bottom-0 right-0 w-3 h-0.5 bg-gradient-to-l from-white to-transparent opacity-70 block"></span>
-                  <span className="absolute bottom-0 right-0 w-0.5 h-3 bg-gradient-to-t from-white to-transparent opacity-70 block"></span>
-                </span>
-
-                Cabinet de recrutement nouvelle génération
-              </span>
+            <span className="block text-gray-50 text-xl font-light italic">
+              Cabinet de recrutement nouvelle génération
             </span>
           </h1>
         </div>
 
         <div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up"
-          style={{ animationDelay: "0.6s" }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up animate-fade-in-up-stagger-2"
         >
           <Link href="/jobs">
             <Button
               size="lg"
-              className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-glow backdrop-blur-sm"
+              className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0078BE]"
+              style={{ transition: 'background 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)' }}
             >
               <Briefcase className="w-5 h-5 mr-2" />
               Je veux un job de rêve !
@@ -139,7 +116,8 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white bg-white/20 hover:bg-white/30 text-lg px-8 py-4 font-semibold backdrop-blur-sm transition-all duration-300 hover:scale-105 shadow-xl"
+              className="border-2 border-white text-white bg-white/20 hover:bg-white/30 text-lg px-8 py-4 font-semibold backdrop-blur-sm transition-all duration-300 hover:scale-105 shadow-xl focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
+              style={{ transition: 'background 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)' }}
             >
               <Lightbulb className="w-5 h-5 mr-2" />
               Je veux une pépite !
@@ -149,19 +127,18 @@ export function Hero() {
 
         {/* Trust indicators avec fond semi-transparent */}
         <div
-          className="flex flex-wrap justify-center items-center gap-8 text-white animate-fade-in-up bg-black/20 backdrop-blur-sm rounded-2xl p-4 border border-white/10 mb-6 sm:mb-12"
-          style={{ animationDelay: "0.9s" }}
+          className="flex flex-wrap justify-center items-center gap-8 text-white animate-fade-in-up animate-fade-in-up-stagger-3 bg-black/20 backdrop-blur-sm rounded-2xl p-4 border border-white/10 mb-6 sm:mb-12"
         >
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-[#0078BE] rounded-full animate-sparkle shadow-lg" />
+            <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />
             <span className="text-sm font-medium drop-shadow-md">500+ recrutement réussis</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-[#0078BE] rounded-full animate-sparkle shadow-lg" />
+            <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />
             <span className="text-sm font-medium drop-shadow-md">100+ entreprises partenaires</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-[#0078BE] rounded-full animate-sparkle shadow-lg" />
+            <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />
             <span className="text-sm font-medium drop-shadow-md">96% de satisfaction client</span>
           </div>
         </div>

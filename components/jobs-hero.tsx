@@ -78,7 +78,8 @@ export function JobsHero() {
 
         <Button
           asChild
-          className={`bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-glow backdrop-blur-sm transition-all duration-1000 delay-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`bg-[#0078BE] text-white px-8 py-4 text-lg font-semibold shadow-2xl transition-all duration-300 animate-pulse-glow backdrop-blur-sm ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} hover:bg-[#006bb0] hover:shadow-[0_0_32px_8px_rgba(0,120,190,0.35)] hover:scale-105 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0078BE]`}
+          style={{ transition: 'background 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)' }}
         >
           <Link href="/contact">
             Nous écrire en toute discrétion

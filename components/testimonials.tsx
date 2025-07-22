@@ -1,7 +1,11 @@
+"use client"
+
 import { Star, Quote } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Testimonials() {
+  const { ref, isVisible } = useScrollAnimation()
   const testimonials = [
     {
       name: "Marie Dubois",
@@ -39,30 +43,41 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          ref={ref}
+        >
           {testimonials.map((testimonial, index) => (
-            <Card
+            <div
               key={index}
-              className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className={`${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} h-full`}
+              style={{
+                transition: "opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1)",
+                transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
+              }}
             >
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
+              <Card
+                className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full"
+              >
+                <CardContent className="p-8">
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
 
-                <Quote className="w-8 h-8 text-blue-500 mb-4" />
+                  <Quote className="w-8 h-8 text-blue-500 mb-4" />
 
-                <p className="text-gray-700 mb-6 leading-relaxed">"{testimonial.content}"</p>
+                  <p className="text-gray-700 mb-6 leading-relaxed">"{testimonial.content}"</p>
 
-                <div className="border-t pt-4">
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  <div className="text-sm text-blue-600 font-medium">{testimonial.company}</div>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="border-t pt-4">
+                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                    <div className="text-sm text-blue-600 font-medium">{testimonial.company}</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
       </div>
