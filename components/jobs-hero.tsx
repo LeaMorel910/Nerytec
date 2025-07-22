@@ -1,5 +1,5 @@
 "use client"
-import { Search, Briefcase, Smile, ChevronDown } from "lucide-react"
+import { Search, Briefcase, Smile, ChevronDown, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -72,6 +72,12 @@ export function JobsHero() {
             <Smile className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
             <span className="font-medium text-sm md:text-base">
               Accompagnement individuel personnalisé
+            </span>
+          </div>
+          <div className="flex items-center justify-center md:justify-start space-x-2">
+            <TrendingUp className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
+            <span className="font-medium text-sm md:text-base">
+              Opportunités d'actionnariat et de prise de participation
             </span>
           </div>
         </div>

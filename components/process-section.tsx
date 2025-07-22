@@ -13,7 +13,7 @@ export function ProcessSection() {
             icon: MessageCircle,
             number: "1",
             title: "Entretien Conseil",
-            description: "Analyse de votre profil, vos aspirations et profilage de vos besoins/attentes",
+            description: "Analyse de votre parcours , vos aspirations et profilage de vos besoins/attentes",
             color: "bg-[#0078BE]",
         },
         {
