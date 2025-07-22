@@ -76,16 +76,6 @@ export function ContactInfo() {
               </div>
             ))}
           </div>
-
-          <div className="mt-12 p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-            <h3 className="text-xl font-semibold text-white mb-4">Pourquoi nous contacter ?</h3>
-            <ul className="space-y-2 text-blue-100">
-              <li>• Conseil personnalisé pour votre recherche d'emploi</li>
-              <li>• Accompagnement dans vos projets de recrutement</li>
-              <li>• Expertise du marché ESN et conseil en ingénierie</li>
-              <li>• Réseau de partenaires et opportunités exclusives</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>

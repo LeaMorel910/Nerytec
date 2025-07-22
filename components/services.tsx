@@ -3,6 +3,7 @@
 import { Briefcase, Users, Target, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { Button } from "@/components/ui/button"
 
 export function Services() {
   const { ref, isVisible } = useScrollAnimation()
@@ -32,7 +33,6 @@ export function Services() {
       features: [
         "Directeur Général",
         "Directeur des opérations",
-        "Directeur des Ressources Humaines",
         "Directeur Administratif et financier"
       ],
     },
@@ -51,6 +51,20 @@ export function Services() {
         "Directeur du delivery"
       ],
     },
+    {
+      icon: Users,
+      title: (
+        <>
+          Ressources Humaines (H/F)
+        </>
+      ),
+      features: [
+        "Directeur des Ressources Humaines",
+        "Responsable des Ressources Humaines",
+        "Chargé de recrutement",
+        "Ressource manager"
+      ],
+    },
   ]
 
   return (
@@ -63,7 +77,7 @@ export function Services() {
         </div>
         {/* Grille adaptative : 1 col mobile, 2 cols tablette, 3 cols desktop */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           ref={ref}
         >
           {services.map((service, index) => (
@@ -97,6 +111,16 @@ export function Services() {
               </Card>
             </div>
           ))}
+        </div>
+        {/* Add the button below the grid */}
+        <div className="flex justify-center mt-12">
+          <Button
+            asChild
+            size="lg"
+            className="bg-[#0078BE] hover:bg-[#006bb0] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-white font-bold text-lg"
+          >
+            <a href="/jobs#contact-form">Découvrir Nos Opportunités Exclusives</a>
+          </Button>
         </div>
       </div>
     </section>

@@ -52,7 +52,7 @@ export function ContactHero() {
           </div>
 
           <div className="flex items-center space-x-2 relative group cursor-pointer">
-            <MessageCircle className="w-5 h-5 text-teal-500" />
+            <Phone className="w-5 h-5 text-teal-500" />
             <span className="font-medium">Écoute attentive</span>
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
               0800 123 456
