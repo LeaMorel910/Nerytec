@@ -16,7 +16,7 @@ export function CTA() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Prêt à faire le prochain pas ?</h2>
           <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
-            Que vous soyez candidat ou recruteur, nous sommes là pour vous accompagner
+            Que vous soyez un candidat ou une entreprise, nous sommes là pour vous accompagner
           </p>
         </div>
 
@@ -28,7 +28,7 @@ export function CTA() {
                 <Users className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Vous êtes candidat ?</h3>
-              <p className="text-blue-100 mb-6 leading-relaxed">
+              <p className="text-blue-100 mb-6 leading-relaxed min-h-[72px]">
                 Découvrez nos opportunités exclusives et bénéficiez d'un accompagnement personnalisé dans votre
                 recherche d'emploi.
               </p>
@@ -51,8 +51,8 @@ export function CTA() {
                 <Building className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Vous recrutez ?</h3>
-              <p className="text-blue-100 mb-6 leading-relaxed">
-                Confiez-nous vos recrutements et accédez à notre réseau de talents commerciaux et managériaux qualifiés.
+              <p className="text-blue-100 mb-6 leading-relaxed min-h-[72px]">
+                Confiez-nous vos recrutements et accédez à notre réseau de talents.
               </p>
               <Link href="/recruit">
                 <Button

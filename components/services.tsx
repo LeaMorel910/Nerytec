@@ -8,9 +8,12 @@ export function Services() {
   const { ref, isVisible } = useScrollAnimation()
   const services = [
     {
-      icon: Briefcase,
-      title: "Management Commercial (H/F)",
-      description: "Identification et sélection  de profils Sales managers  pertinents",
+      icon: Users,
+      title: (
+        <>
+          Management/ Direction <br /> Commercial (H/F)
+        </>
+      ),
       features: [
         "Directeur commercial",
         "Global Account Manager",
@@ -20,9 +23,12 @@ export function Services() {
       ],
     },
     {
-      icon: Target,
-      title: "Direction Générale (H/F)",
-      description: "Recrutement de profils de direction de haut niveau",
+      icon: Users,
+      title: (
+        <>
+          Direction Générale (H/F) <br /> &nbsp;
+        </>
+      ),
       features: [
         "Directeur Général",
         "Directeur des opérations",
@@ -32,8 +38,11 @@ export function Services() {
     },
     {
       icon: Users,
-      title: "Spécialisation ESN & Conseil (H/F)",
-      description: "Expertise dédiée aux Entreprises de Services Numériques- societes de conseil en ingenierie",
+      title: (
+        <>
+          Direction Technique – <br /> opérationnelle (H/F)
+        </>
+      ),
       features: [
         "Directeur des engagements",
         "Directeur de projet",
@@ -50,7 +59,7 @@ export function Services() {
         <div className="text-center mb-16 ">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nerytec Consulting</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Le partenaire incontournable des ESN et des sociétés de conseil en ingénierie, ainsi que le partenaire incontournable pour booster votre carrière.          </p>
+            Le partenaire incontournable des ESN et des sociétés de conseil en ingénierie. Le partenaire incontournable pour booster votre carrière.          </p>
         </div>
         {/* Grille adaptative : 1 col mobile, 2 cols tablette, 3 cols desktop */}
         <div
@@ -69,12 +78,11 @@ export function Services() {
               <Card
                 className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:-translate-y-1 h-full"
               >
-                <CardHeader className="pb-4">
+                <CardHeader className="pb-4 min-h-[96px] flex flex-col justify-end">
                   <div className="w-14 h-14 bg-[#0078BE] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <service.icon className="w-7 h-7 text-white" />
                   </div>
                   <CardTitle className="text-xl font-bold text-gray-900">{service.title}</CardTitle>
-                  <CardDescription className="text-gray-600 text-base">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">

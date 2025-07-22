@@ -90,9 +90,7 @@ export function About() {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Pourquoi choisir NERYTEC ?</h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Depuis plus de 20 ans, NERYTEC Consulting accompagne les entreprises dans leurs recrutements de profils
-              commerciaux et managériaux. Notre expertise du secteur des ESN et du conseil en ingénierie nous permet de
-              comprendre vos enjeux et de vous proposer les meilleurs talents.
+              Depuis plus de 20 ans,  Notre expertise du secteur des ESN et du conseil en ingénierie nous permet d’anticiper les enjeux de nos clients  et les enjeux de nos  talents.
             </p>
 
             <div className="space-y-6 mb-8" ref={ref}>
@@ -163,7 +161,7 @@ export function About() {
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-700">ESN & Conseil</span>
+                    <span className="text-gray-700">ESN & Conseil en ingénierie</span>
                     <span className="font-semibold text-blue-600">100%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">

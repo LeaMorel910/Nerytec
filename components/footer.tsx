@@ -19,8 +19,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Cabinet de recrutement spécialisé dans les profils commerciaux et managériaux pour les ESN et sociétés de
-              conseil en ingénierie depuis plus de 20 ans.
+              Cabinet de recrutement spécialisé dans les profils à connotation commerciale et managériale  pour les ESN et sociétés de conseil en ingénierie depuis plus de 20 ans.
             </p>
             <div className="flex space-x-4">
               <a
