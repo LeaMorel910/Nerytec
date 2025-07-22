@@ -46,10 +46,6 @@ export default function GiftCards() {
                         Nos bons Cadeaux
 
                     </h1>
-                    <p className="text-gray-600 text-sm md:text-base">
-                        En tant que cabinet de recrutement, nous offrons des chèques cadeaux
-                        à nos clients pour les remercier de leur confiance.
-                    </p>
                 </div>
 
                 {/* Grille des cartes */}
