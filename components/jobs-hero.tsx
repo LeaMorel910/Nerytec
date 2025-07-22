@@ -60,12 +60,12 @@ export function JobsHero() {
         >
           <div className="flex items-center justify-center md:justify-start space-x-2">
             <Search className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
-            <span className="font-medium text-sm md:text-base">Nos opportunités exclusives</span>
+            <span className="font-medium text-sm md:text-base">Notre processus</span>
           </div>
           <div className="flex items-center justify-center md:justify-start space-x-2">
             <Briefcase className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
             <span className="font-medium text-sm md:text-base text-center md:text-left">
-              Opportunités d'actionariat et de prise de participation
+              Nos opportunités exclusives
             </span>
           </div>
           <div className="flex items-center justify-center md:justify-start space-x-2">
