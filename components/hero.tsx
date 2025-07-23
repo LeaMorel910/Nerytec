@@ -76,10 +76,10 @@ export function Hero() {
       </div>
 
       {/* Overlay pour améliorer la lisibilité */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/10" />
 
       {/* Overlay graduel pour un effet plus doux */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20" />
 
       {/* Filtre coloré optionnel pour harmoniser avec la marque */}
       <div className="absolute inset-0 bg-blue-900/10" />
