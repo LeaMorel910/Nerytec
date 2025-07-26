@@ -219,6 +219,99 @@ export function Offres() {
           </Link>
         </div>
       </div>
+
+      <style jsx>{`
+        /* Adaptations responsive pour mobile uniquement */
+        @media (max-width: 639px) {
+          .py-20 {
+            padding-top: 3rem !important; /* py-12 */
+            padding-bottom: 3rem !important;
+          }
+          
+          .mb-16 {
+            margin-bottom: 3rem !important; /* mb-12 */
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem !important; /* text-2xl */
+            line-height: 2rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .text-xl {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .mb-8 {
+            margin-bottom: 1.5rem !important; /* mb-6 */
+          }
+          
+          .mb-12 {
+            margin-bottom: 2rem !important; /* mb-8 */
+          }
+          
+          .gap-3 {
+            gap: 0.5rem !important; /* gap-2 */
+          }
+          
+          .px-4.py-2 {
+            padding-left: 0.75rem !important; /* px-3 */
+            padding-right: 0.75rem !important;
+            padding-top: 0.5rem !important; /* py-2 */
+            padding-bottom: 0.5rem !important;
+          }
+          
+          .text-sm {
+            font-size: 0.75rem !important; /* text-xs */
+            line-height: 1rem !important;
+          }
+          
+          .gap-8 {
+            gap: 1.5rem !important; /* gap-6 */
+          }
+          
+          .p-8 {
+            padding: 1.5rem !important; /* p-6 */
+          }
+          
+          .mb-6 {
+            margin-bottom: 1rem !important; /* mb-4 */
+          }
+          
+          .mb-3 {
+            margin-bottom: 0.5rem !important; /* mb-2 */
+          }
+          
+          .mt-16 {
+            margin-top: 3rem !important; /* mt-12 */
+          }
+          
+          .gap-6 {
+            gap: 1rem !important; /* gap-4 */
+          }
+          
+          .text-lg {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+          }
+          
+          .text-sm.mt-2 {
+            font-size: 0.75rem !important; /* text-xs */
+            line-height: 1rem !important;
+            margin-top: 0.5rem !important;
+          }
+          
+          /* Styles inline pour les titres des offres sur mobile */
+          h3[style*="fontSize: '20px'"] {
+            font-size: 1.125rem !important; /* 18px */
+            line-height: 1.5rem !important; /* 24px */
+          }
+        }
+      `}</style>
     </section>
   )
 }

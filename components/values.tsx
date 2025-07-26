@@ -1,11 +1,9 @@
 "use client"
-
 import { Heart, Shield, Zap, Users, Target, Award } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Values() {
   const { ref, isVisible } = useScrollAnimation()
-
   const values = [
     {
       icon: Heart,
@@ -54,7 +52,6 @@ export function Values() {
             Depuis 2005, NERYTEC Consulting accompagne exclusivement les ESN et sociétés de conseil en technologies dans leurs recrutements. Notre hyperspécialisation du marché nous permet de comprendre parfaitement vos enjeux et de vous proposer les meilleurs talents.
           </p>
         </div>
-
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((value, index) => (
             <div
@@ -65,9 +62,7 @@ export function Values() {
                 transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
               }}
             >
-              <div
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 h-full flex flex-col"
-              >
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 h-full flex flex-col">
                 <div
                   className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                 >
@@ -80,6 +75,71 @@ export function Values() {
           ))}
         </div>
       </div>
+      <style jsx>{`
+        /* Adaptations responsive pour mobile uniquement */
+        @media (max-width: 639px) {
+          .py-20 {
+            padding-top: 3rem !important; /* py-12 */
+            padding-bottom: 3rem !important;
+          }
+          
+          .mb-16 {
+            margin-bottom: 3rem !important; /* mb-12 */
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem !important; /* text-2xl */
+            line-height: 2rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .text-xl {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .gap-8 {
+            gap: 1.5rem !important; /* gap-6 */
+          }
+          
+          .p-8 {
+            padding: 1.5rem !important; /* p-6 */
+          }
+          
+
+          
+          .w-16.h-16 {
+            width: 3.5rem !important; /* w-14 */
+            height: 3.5rem !important; /* h-14 */
+          }
+          
+          .w-8.h-8 {
+            width: 1.75rem !important; /* w-7 */
+            height: 1.75rem !important; /* h-7 */
+          }
+          
+          .mb-6 {
+            margin-bottom: 1rem !important; /* mb-4 */
+          }
+          
+          .text-xl.font-bold {
+            font-size: 1.125rem !important; /* text-lg */
+            line-height: 1.75rem !important;
+          }
+          
+          .mb-4 {
+            margin-bottom: 0.75rem !important; /* mb-3 */
+          }
+          
+          .text-gray-600.leading-relaxed {
+            font-size: 0.875rem !important; /* text-sm */
+            line-height: 1.25rem !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

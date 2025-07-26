@@ -4,6 +4,7 @@ import { Briefcase, Users, Target, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function Services() {
   const { ref, isVisible } = useScrollAnimation()
@@ -68,16 +69,20 @@ export function Services() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 ">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nerytec Consulting</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Le partenaire incontournable des ESN et des sociétés de conseil en ingénierie. Le partenaire incontournable pour booster votre carrière.          </p>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Nerytec Consulting
+          </h2>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+            Le partenaire incontournable des ESN et des sociétés de conseil en ingénierie. Le partenaire incontournable pour booster votre carrière.
+          </p>
         </div>
-        {/* Grille adaptative : 1 col mobile, 2 cols tablette, 3 cols desktop */}
+
+        {/* Grille responsive : 1 col mobile, 2 cols tablette, 4 cols desktop */}
         <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           ref={ref}
         >
           {services.map((service, index) => (
@@ -92,18 +97,22 @@ export function Services() {
               <Card
                 className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:-translate-y-1 h-full"
               >
-                <CardHeader className="pb-4 min-h-[96px] flex flex-col justify-end">
-                  <div className="w-14 h-14 bg-[#0078BE] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="w-7 h-7 text-white" />
+                <CardHeader className="pb-3 sm:pb-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#0078BE] rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900">{service.title}</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 leading-tight">
+                    {service.title}
+                  </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
+                <CardContent className="pt-0">
+                  <ul className="space-y-2 sm:space-y-3">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center space-x-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
+                      <li key={featureIndex} className="flex items-start space-x-2 sm:space-x-3">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -112,15 +121,17 @@ export function Services() {
             </div>
           ))}
         </div>
-        {/* Add the button below the grid */}
-        <div className="flex justify-center mt-12">
-          <Button
-            asChild
-            size="lg"
-            className="bg-[#0078BE] hover:bg-[#006bb0] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-white font-bold text-lg"
-          >
-            <a href="/jobs#contact-form">Découvrir Nos Opportunités Exclusives</a>
-          </Button>
+
+        {/* Button responsive */}
+        <div className="flex justify-center mt-8 sm:mt-10 lg:mt-12 px-4">
+          <Link href="/jobs#contact-form">
+            <Button
+              size="lg"
+              className="bg-[#0078BE] hover:bg-[#006bb0] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full sm:w-auto text-sm sm:text-base max-w-sm sm:max-w-none"
+            >
+              Découvrir Nos Opportunités Exclusives
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

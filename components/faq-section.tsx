@@ -151,6 +151,70 @@ export function FAQSection() {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        /* Adaptations responsive pour mobile uniquement */
+        @media (max-width: 639px) {
+          .py-20 {
+            padding-top: 3rem !important; /* py-12 */
+            padding-bottom: 3rem !important;
+          }
+          
+          .mb-16 {
+            margin-bottom: 3rem !important; /* mb-12 */
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem !important; /* text-2xl */
+            line-height: 2rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .text-xl {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 0.75rem !important; /* space-y-3 */
+          }
+          
+          .px-6.py-4 {
+            padding-left: 1rem !important; /* px-4 */
+            padding-right: 1rem !important;
+            padding-top: 0.75rem !important; /* py-3 */
+            padding-bottom: 0.75rem !important;
+          }
+          
+          .w-5.h-5 {
+            width: 1rem !important; /* w-4 */
+            height: 1rem !important; /* h-4 */
+          }
+          
+          .mr-3 {
+            margin-right: 0.5rem !important; /* mr-2 */
+          }
+          
+          .text-lg {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+          }
+          
+          .px-6.pb-4 {
+            padding-left: 1rem !important; /* px-4 */
+            padding-right: 1rem !important;
+            padding-bottom: 0.75rem !important; /* pb-3 */
+          }
+          
+          .text-gray-600.leading-relaxed {
+            font-size: 0.875rem !important; /* text-sm */
+            line-height: 1.25rem !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

@@ -1,5 +1,4 @@
 "use client"
-
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
@@ -31,7 +30,6 @@ export function ContactInfo() {
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Nos coordonnées</h2>
-
           <div className="space-y-8">
             {contactDetails.map((item, index) => (
               <div
@@ -78,6 +76,59 @@ export function ContactInfo() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        /* Adaptations responsive pour mobile uniquement */
+        @media (max-width: 639px) {
+          .py-20 {
+            padding-top: 3rem !important; /* py-12 */
+            padding-bottom: 3rem !important;
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem !important; /* text-2xl */
+            line-height: 2rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .mb-8 {
+            margin-bottom: 1.5rem !important; /* mb-6 */
+          }
+          
+          .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 1.5rem !important; /* space-y-6 */
+          }
+          
+          .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+            margin-left: 0.75rem !important; /* space-x-3 */
+          }
+          
+          .w-12.h-12 {
+            width: 2.5rem !important; /* w-10 */
+            height: 2.5rem !important; /* h-10 */
+          }
+          
+          .w-6.h-6 {
+            width: 1.25rem !important; /* w-5 */
+            height: 1.25rem !important; /* h-5 */
+          }
+          
+          .text-lg {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+          }
+          
+          .mb-1 {
+            margin-bottom: 0.25rem !important;
+          }
+          
+          .text-blue-100 {
+            font-size: 0.875rem !important; /* text-sm */
+            line-height: 1.25rem !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

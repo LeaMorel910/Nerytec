@@ -204,12 +204,69 @@ export function Testimonials() {
       </div>
 
       <style jsx>{`
+        /* Adaptations responsive pour mobile uniquement */
+        @media (max-width: 639px) {
+          .py-20 {
+            padding-top: 3rem !important; /* py-12 */
+            padding-bottom: 3rem !important;
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem !important; /* text-2xl */
+            line-height: 2rem !important;
+          }
+          
+          .text-xl {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+          }
+          
+          .mb-16 {
+            margin-bottom: 3rem !important; /* mb-12 */
+          }
+          
+          .w-80 {
+            width: 18rem !important; /* w-72 */
+          }
+          
+          .gap-6 {
+            gap: 1rem !important; /* gap-4 */
+          }
+          
+          .p-6 {
+            padding: 1rem !important; /* p-4 */
+          }
+          
+          .mb-4:first-child {
+            margin-bottom: 0.75rem !important; /* mb-3 */
+          }
+          
+          .w-6.h-6 {
+            width: 1.25rem !important; /* w-5 */
+            height: 1.25rem !important; /* h-5 */
+          }
+          
+          .min-h-[120px] {
+            min-height: 100px !important;
+          }
+          
+          .text-sm {
+            font-size: 0.75rem !important; /* text-xs */
+            line-height: 1rem !important;
+          }
+          
+          .pt-4 {
+            padding-top: 0.75rem !important; /* pt-3 */
+          }
+        }
+        
+        /* Animation unifiée pour tous les écrans */
         @keyframes scroll {
           from {
             transform: translateX(-${cardWidthWithGap}px);
           }
           to {
-            transform: translateX(calc(-80% - ${cardWidthWithGap}px));
+            transform: translateX(calc(-${testimonials.length * cardWidthWithGap}px));
           }
         }
 
@@ -222,10 +279,10 @@ export function Testimonials() {
           animation-play-state: paused;
         }
 
-        /* Assurer la fluidité sur mobile */
+        /* Vitesse adaptée pour mobile */
         @media (max-width: 768px) {
           .animate-scroll {
-            animation: scroll 45s linear infinite;
+            animation: scroll 40s linear infinite;
           }
         }
       `}</style>

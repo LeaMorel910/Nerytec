@@ -1,10 +1,11 @@
 "use client"
-
 import { MessageCircle, Search, Users, CheckCircle } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { useState } from "react"
 
 export function RecruitProcess() {
   const { ref, isVisible } = useScrollAnimation()
+  const [current, setCurrent] = useState(0)
 
   const steps = [
     {
@@ -33,20 +34,68 @@ export function RecruitProcess() {
     },
   ]
 
+  // Fonctions pour le carrousel mobile
+  const prevStep = () => setCurrent((prev) => (prev === 0 ? steps.length - 1 : prev - 1))
+  const nextStep = () => setCurrent((prev) => (prev === steps.length - 1 ? 0 : prev + 1))
+
+  // Correction pour l'icône dynamique
+  const Icon = steps[current].icon
+
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Notre processus</h2>
-          <p className="text-xl text-gray-600">Une méthode éprouvée pour vos recrutements</p>
+    <section className="py-6 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-4">Notre processus</h2>
+          <p className="text-base md:text-xl text-gray-600">Une méthode éprouvée pour vos recrutements</p>
         </div>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Carrousel mobile */}
+        <div className="md:hidden flex flex-col items-center" ref={ref}>
+          <div className="relative w-full max-w-xs mx-auto">
+            <div
+              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg transition-all duration-500 border border-gray-100"
+            >
+              {/* Step number badge stylé */}
+              <div className="absolute -top-3 -right-3 bg-[#0078BE] text-white text-xs w-6 h-6 flex items-center justify-center rounded-full font-bold shadow-md">
+                {steps[current].step}
+              </div>
+              <div className="w-12 h-12 bg-[#0078BE] rounded-full flex items-center justify-center mb-4 transition-transform duration-300">
+                <Icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">{steps[current].title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{steps[current].description}</p>
+            </div>
+            {/* Boutons carrousel */}
+            <div className="flex justify-between items-center mt-4">
+              <button
+                aria-label="Précédent"
+                onClick={prevStep}
+                className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition"
+              >
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#0078BE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              </button>
+              <div className="flex gap-1">
+                {steps.map((_, i) => (
+                  <span key={i} className={`w-2 h-2 rounded-full ${i === current ? 'bg-[#0078BE]' : 'bg-blue-200'}`}></span>
+                ))}
+              </div>
+              <button
+                aria-label="Suivant"
+                onClick={nextStep}
+                className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition"
+              >
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#0078BE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Grille desktop/tablette */}
+        <div ref={ref} className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
             <div
               key={index}
-              className={`text-center group transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+              className={`text-center group transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
               <div className="relative mb-8">

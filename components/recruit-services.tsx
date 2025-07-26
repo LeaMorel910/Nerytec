@@ -1,5 +1,4 @@
 "use client"
-
 import { Target, Clock, Shield } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
@@ -47,7 +46,6 @@ export function RecruitServices() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos services</h2>
           <p className="text-xl text-gray-600">Une offre complète pour vos recrutements</p>
         </div>
-
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
@@ -58,9 +56,7 @@ export function RecruitServices() {
                 transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
               }}
             >
-              <Card
-                className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:-translate-y-2 h-full flex flex-col bg-white/90 backdrop-blur"
-              >
+              <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:-translate-y-2 h-full flex flex-col bg-white/90 backdrop-blur">
                 <CardHeader className="text-center pb-4">
                   <div className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                     <service.icon className="w-8 h-8 text-white" />
@@ -83,6 +79,80 @@ export function RecruitServices() {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        /* Adaptations responsive pour mobile uniquement */
+        @media (max-width: 639px) {
+          .py-20 {
+            padding-top: 3rem !important; /* py-12 */
+            padding-bottom: 3rem !important;
+          }
+          
+          .mb-16 {
+            margin-bottom: 3rem !important; /* mb-12 */
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem !important; /* text-2xl */
+            line-height: 2rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .text-xl {
+            font-size: 1rem !important; /* text-base */
+            line-height: 1.5rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .gap-8 {
+            gap: 1.5rem !important; /* gap-6 */
+          }
+          
+          .pb-4 {
+            padding-bottom: 0.75rem !important; /* pb-3 */
+          }
+          
+          .w-16.h-16 {
+            width: 3.5rem !important; /* w-14 */
+            height: 3.5rem !important; /* h-14 */
+          }
+          
+          .w-8.h-8 {
+            width: 1.75rem !important; /* w-7 */
+            height: 1.75rem !important; /* h-7 */
+          }
+          
+          .mb-4 {
+            margin-bottom: 0.75rem !important; /* mb-3 */
+          }
+          
+          .text-xl.font-bold {
+            font-size: 1.125rem !important; /* text-lg */
+            line-height: 1.75rem !important;
+          }
+          
+          .text-gray-600.mb-6 {
+            font-size: 0.875rem !important; /* text-sm */
+            line-height: 1.25rem !important;
+            margin-bottom: 1rem !important; /* mb-4 */
+          }
+          
+          .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 0.5rem !important;
+          }
+          
+          .text-sm.text-gray-700 {
+            font-size: 0.75rem !important; /* text-xs */
+            line-height: 1rem !important;
+          }
+          
+          .mr-3 {
+            margin-right: 0.5rem !important; /* mr-2 */
+          }
+        }
+      `}</style>
     </section>
   )
 }

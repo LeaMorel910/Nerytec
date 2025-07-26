@@ -13,7 +13,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-8 sm:pt-24 sm:pb-16 lg:pt-0">
+    <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-8 sm:pt-24 sm:pb-16 lg:pt-0">
       <style jsx>{`
         @keyframes fadeInUp {
           from {
@@ -52,6 +52,25 @@ export function Hero() {
         .pulse-dot {
           animation: pulse-subtle 1.2s cubic-bezier(0.4,0,0.2,1) infinite;
         }
+        
+        /* Override du scale pour mobile uniquement */
+        @media (max-width: 639px) {
+          .transform.scale-95 {
+            transform: scale(0.75) !important;
+          }
+          /* Conteneur principal plus haut sur mobile */
+          .mobile-container {
+            margin-top: -3rem !important;
+          }
+          /* Cases plus larges et centrées sur mobile */
+          .mobile-box {
+            width: 125vw !important;
+            margin-left: 50% !important;
+            transform: translateX(-50%) !important;
+            max-width: none !important;
+          }
+        }
+        
         @media (prefers-reduced-motion: reduce) {
           .animate-fade-in-up,
           .pulse-dot {
@@ -85,9 +104,9 @@ export function Hero() {
       <div className="absolute inset-0 bg-blue-900/10" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transform scale-95">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transform scale-95 mobile-container">
         {/* Conteneur avec fond semi-transparent pour le texte principal */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-8 border border-white/20 mt-6 sm:mt-12 animate-fade-in-up animate-fade-in-up-stagger-1">
+        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-8 border border-white/20 mt-6 sm:mt-12 animate-fade-in-up animate-fade-in-up-stagger-1 mobile-box">
           <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 mb-0 leading-tight drop-shadow-lg">
             <span className="text-[#0078BE] drop-shadow-2xl">NERYTEC</span> <span className="font-normal text-white">CONSULTING</span>
             <span className="block text-white pb-6 drop-shadow-md">
@@ -127,7 +146,7 @@ export function Hero() {
 
         {/* Trust indicators avec fond semi-transparent */}
         <div
-          className="flex flex-wrap justify-center items-center gap-8 text-white animate-fade-in-up animate-fade-in-up-stagger-3 bg-black/20 backdrop-blur-sm rounded-2xl p-4 border border-white/10 mb-6 sm:mb-12"
+          className="flex flex-wrap justify-center items-center gap-8 text-white animate-fade-in-up animate-fade-in-up-stagger-3 bg-black/20 backdrop-blur-sm rounded-2xl p-4 border border-white/10 mb-6 sm:mb-12 mobile-box"
         >
           <div className="flex items-center space-x-2">
             <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />

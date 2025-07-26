@@ -5,6 +5,7 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Stats() {
   const { ref, isVisible } = useScrollAnimation()
+
   const stats = [
     {
       icon: TrendingUp,
@@ -33,14 +34,16 @@ export function Stats() {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos réalisations - Quelques Chiffres </h2>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 px-2">
+            Nos réalisations - Quelques Chiffres
+          </h2>
         </div>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           ref={ref}
         >
           {stats.map((stat, index) => (
@@ -52,14 +55,20 @@ export function Stats() {
                 transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
               }}
             >
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group hover:-translate-y-2 h-full">
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group hover:-translate-y-2 h-full">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 bg-[#0078BE] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <stat.icon className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#0078BE] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                  <div className="text-lg font-semibold text-gray-700 mb-2">{stat.label}</div>
-                  <div className="text-sm text-gray-500">{stat.description}</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-base sm:text-lg font-semibold text-gray-700 mb-2 leading-tight">
+                    {stat.label}
+                  </div>
+                  <div className="text-sm text-gray-500 leading-relaxed">
+                    {stat.description}
+                  </div>
                 </div>
               </div>
             </div>

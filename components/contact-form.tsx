@@ -203,6 +203,91 @@ export function ContactForm() {
           </form>
         </div>
       </div>
+
+      <style jsx>{`
+        /* Adaptations responsive pour mobile uniquement */
+        @media (max-width: 639px) {
+          .py-20 {
+            padding-top: 3rem !important; /* py-12 */
+            padding-bottom: 3rem !important;
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem !important; /* text-2xl */
+            line-height: 2rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .mb-4 {
+            margin-bottom: 0.75rem !important; /* mb-3 */
+          }
+          
+          .text-base {
+            font-size: 0.875rem !important; /* text-sm */
+            line-height: 1.25rem !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+          }
+          
+          .mb-8 {
+            margin-bottom: 1.5rem !important; /* mb-6 */
+          }
+          
+          .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 1rem !important; /* space-y-4 */
+          }
+          
+          .gap-6 {
+            gap: 1rem !important; /* gap-4 */
+          }
+          
+          .left-3.top-3 {
+            left: 0.75rem !important;
+            top: 0.75rem !important;
+          }
+          
+          .w-5.h-5 {
+            width: 1rem !important; /* w-4 */
+            height: 1rem !important; /* h-4 */
+          }
+          
+          .pl-10 {
+            padding-left: 2rem !important; /* pl-8 */
+          }
+          
+          .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+            margin-left: 0.5rem !important; /* space-x-2 */
+          }
+          
+          .text-sm {
+            font-size: 0.75rem !important; /* text-xs */
+            line-height: 1rem !important;
+          }
+          
+          .file\\:py-2 {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+          }
+          
+          .file\\:px-4 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+          }
+          
+          .file\\:text-sm {
+            font-size: 0.75rem !important;
+          }
+          
+          .mr-2 {
+            margin-right: 0.5rem !important;
+          }
+          
+          .mt-2 {
+            margin-top: 0.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
