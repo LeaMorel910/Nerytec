@@ -2,18 +2,47 @@
 
 import { ArrowRight, Briefcase, Lightbulb } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 
 export function Hero() {
   const [isAnimationReady, setIsAnimationReady] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsAnimationReady(true);
   }, []);
 
+  const handleVideoCanPlay = () => {
+    setVideoLoaded(true);
+    if (videoRef.current) {
+      // Tentative de lecture automatique silencieuse
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Si l'autoplay échoue, la vidéo reste juste figée - pas de bouton
+          console.log('Autoplay bloqué, vidéo en pause');
+        });
+      }
+    }
+  };
+
+  // Tentative discrète de relance sur interaction utilisateur
+  const handleUserInteraction = () => {
+    if (videoRef.current && videoRef.current.paused) {
+      videoRef.current.play().catch(() => {
+        // Échec silencieux, pas d'interface
+      });
+    }
+  };
+
   return (
-    <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-8 sm:pt-24 sm:pb-16 lg:pt-0">
+    <section
+      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-8 sm:pt-24 sm:pb-16 lg:pt-0"
+      onClick={handleUserInteraction}
+      onTouchStart={handleUserInteraction}
+    >
       <style jsx>{`
         @keyframes fadeInUp {
           from {
@@ -82,13 +111,24 @@ export function Hero() {
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover"
+          onCanPlay={handleVideoCanPlay}
+          onLoadedData={() => setVideoLoaded(true)}
+          // Attributs spécifiques pour forcer la lecture sur mobile
+          webkit-playsinline="true"
+          x5-playsinline="true"
+          x5-video-player-type="h5"
+          x5-video-player-fullscreen="true"
+          x5-video-orientation="portraint"
         >
           <source src="/surf.mp4" type="video/mp4" />
+          <source src="/surf.webm" type="video/webm" />
           {/* Fallback pour les navigateurs qui ne supportent pas la vidéo */}
           <div className="w-full h-full bg-gradient-to-br from-blue-50 to-purple-50" />
         </video>
