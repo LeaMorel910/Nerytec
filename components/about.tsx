@@ -6,30 +6,71 @@ import Link from "next/link"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useRef, useState } from "react"
 
-export function About() {
-  const { ref, isVisible } = useScrollAnimation()
-  const values = [
+interface AboutValue {
+  title: string
+  description: string
+}
+
+interface AboutExperience {
+  years?: string
+  description?: string
+  esnPercentage?: string
+  satisfactionPercentage?: string
+}
+
+interface AboutProps {
+  title?: string
+  description?: string
+  values?: AboutValue[]
+  buttonText?: string
+  buttonLink?: string
+  experience?: AboutExperience
+}
+
+function iconForIndex(index: number) {
+  switch (index) {
+    case 0:
+      return Clock
+    case 1:
+      return Shield
+    case 2:
+      return Heart
+    default:
+      return Lightbulb
+  }
+}
+
+export function About({
+  title = "Pourquoi choisir NERYTEC ?",
+  description = "Depuis plus de 20 ans, Notre expertise du secteur des ESN et du conseil en ingénierie nous permet d'anticiper les enjeux de nos clients et les enjeux de nos talents.",
+  values = [
     {
-      icon: Clock,
       title: "Réactivité",
       description: "Réponse rapide et suivi personnalisé de chaque mission",
     },
     {
-      icon: Shield,
       title: "Confidentialité",
       description: "Respect total de la confidentialité de nos clients et candidats",
     },
     {
-      icon: Heart,
       title: "Proximité",
       description: "Relation de confiance et accompagnement sur le long terme",
     },
     {
-      icon: Lightbulb,
       title: "Expertise",
       description: "Connaissance approfondie des métiers et du marché",
     },
-  ]
+  ],
+  buttonText = "Découvrir notre histoire",
+  buttonLink = "/about",
+  experience = {
+    years: "20+",
+    description: "Dans le recrutement spécialisé",
+    esnPercentage: "100%",
+    satisfactionPercentage: "96%"
+  }
+}: AboutProps) {
+  const { ref, isVisible } = useScrollAnimation()
 
   // --- 3D Tilt pour la carte expérience (désactivé sur mobile) ---
   const cardRef = useRef<HTMLDivElement>(null)
@@ -38,7 +79,7 @@ export function About() {
 
   function handleMouseEnter(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     // Désactiver l'effet tilt sur mobile
-    if (window.innerWidth < 768) return
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return
 
     setIsMouseOver(true)
     const card = cardRef.current
@@ -61,7 +102,7 @@ export function About() {
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     // Désactiver l'effet tilt sur mobile
-    if (window.innerWidth < 768) return
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return
 
     const card = cardRef.current
     if (!card) return
@@ -93,45 +134,48 @@ export function About() {
           {/* Content */}
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
-              Pourquoi choisir NERYTEC ?
+              {title}
             </h2>
             <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-              Depuis plus de 20 ans, Notre expertise du secteur des ESN et du conseil en ingénierie nous permet d'anticiper les enjeux de nos clients et les enjeux de nos talents.
+              {description}
             </p>
 
             <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8" ref={ref}>
-              {values.map((value, index) => (
-                <div
-                  key={index}
-                  className={`${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                  style={{
-                    transition: "opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1)",
-                    transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
-                  }}
-                >
-                  <div className="flex items-start space-x-3 sm:space-x-4 bg-white rounded-lg p-2 sm:p-0 transition-transform transition-shadow transition-colors duration-300 group hover:scale-105 hover:shadow-lg">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#0078BE] rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-[#006bb0]">
-                      <value.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1 leading-tight">
-                        {value.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                        {value.description}
-                      </p>
+              {values.map((value, index) => {
+                const Icon = iconForIndex(index)
+                return (
+                  <div
+                    key={index}
+                    className={`${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                    style={{
+                      transition: "opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1)",
+                      transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
+                    }}
+                  >
+                    <div className="flex items-start space-x-3 sm:space-x-4 bg-white rounded-lg p-2 sm:p-0 transition-transform transition-shadow transition-colors duration-300 group hover:scale-105 hover:shadow-lg">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#0078BE] rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-[#006bb0]">
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1 leading-tight">
+                          {value.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                          {value.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
 
-            <Link href="/about">
+            <Link href={buttonLink || "/about"}>
               <Button
                 size="lg"
                 className="bg-[#0078BE] hover:bg-[#006bb0] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full sm:w-auto text-sm sm:text-base"
               >
-                Découvrir notre histoire
+                {buttonText}
               </Button>
             </Link>
           </div>
@@ -142,7 +186,7 @@ export function About() {
               ref={cardRef}
               className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
               style={{
-                transform: isMouseOver && window.innerWidth >= 768
+                transform: typeof window !== 'undefined' && isMouseOver && window.innerWidth >= 768
                   ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${tilt.scale})`
                   : 'none',
                 transition: tilt.transition,
@@ -157,14 +201,14 @@ export function About() {
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-center space-x-3 sm:space-x-4">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#0078BE] rounded-xl sm:rounded-2xl flex items-center justify-center transition-colors transition-transform duration-300 group-hover:bg-[#006bb0] group-hover:scale-105">
-                    <span className="text-lg sm:text-2xl font-bold text-white">20+</span>
+                    <span className="text-lg sm:text-2xl font-bold text-white">{experience.years}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-base sm:text-lg font-semibold text-gray-900 leading-tight">
                       Années d'expérience
                     </div>
                     <div className="text-sm sm:text-base text-gray-600">
-                      Dans le recrutement spécialisé
+                      {experience.description}
                     </div>
                   </div>
                 </div>
@@ -174,7 +218,7 @@ export function About() {
                 <div className="space-y-3 sm:space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm sm:text-base text-gray-700">ESN & Conseil en ingénierie</span>
-                    <span className="font-semibold text-blue-600 text-sm sm:text-base">100%</span>
+                    <span className="font-semibold text-blue-600 text-sm sm:text-base">{experience.esnPercentage}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div className="bg-[#0078BE] h-2 rounded-full w-full transition-all duration-700" />
@@ -184,7 +228,7 @@ export function About() {
                 <div className="space-y-3 sm:space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm sm:text-base text-gray-700">Satisfaction client</span>
-                    <span className="font-semibold text-blue-600 text-sm sm:text-base">96%</span>
+                    <span className="font-semibold text-blue-600 text-sm sm:text-base">{experience.satisfactionPercentage}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div className="bg-[#0078BE] h-2 rounded-full w-[95%] transition-all duration-700" />

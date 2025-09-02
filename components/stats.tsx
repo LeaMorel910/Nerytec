@@ -3,10 +3,22 @@
 import { TrendingUp, Users, Building, Award } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
-export function Stats() {
+interface Stat {
+  number: string
+  label?: string
+  description?: string
+}
+
+interface StatsProps {
+  title?: string
+  stats?: Stat[]
+}
+
+export function Stats({ title, stats }: StatsProps) {
   const { ref, isVisible } = useScrollAnimation()
 
-  const stats = [
+  // Contenu d'origine
+  const original = [
     {
       icon: TrendingUp,
       value: "500+",
@@ -33,12 +45,22 @@ export function Stats() {
     },
   ]
 
+  // Si stats Sanity fournies, on complète proprement sans dégrader l'affichage
+  const displayStats = Array.isArray(stats) && stats.length > 0
+    ? stats.slice(0, 4).map((s, i) => ({
+      icon: original[i]?.icon || TrendingUp,
+      value: s.number ?? original[i]?.value,
+      label: s.label ?? original[i]?.label,
+      description: s.description ?? original[i]?.description,
+    }))
+    : original
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 px-2">
-            Nos réalisations - Quelques Chiffres
+            {title || 'Nos réalisations - Quelques Chiffres'}
           </h2>
         </div>
 
@@ -46,7 +68,7 @@ export function Stats() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           ref={ref}
         >
-          {stats.map((stat, index) => (
+          {displayStats.map((stat, index) => (
             <div
               key={index}
               className={`${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} h-full`}

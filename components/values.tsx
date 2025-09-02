@@ -2,9 +2,32 @@
 import { Heart, Shield, Zap, Users, Target, Award } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
-export function Values() {
+interface ValuesItemInput { title: string; description: string }
+interface ValuesItem extends ValuesItemInput { icon: any; color: string }
+interface ValuesProps {
+  title?: string
+  description?: string
+  items?: Array<ValuesItemInput>
+}
+
+export function Values({
+  title = "Pourquoi choisir NERYTEC ?",
+  description = "Depuis 2005, NERYTEC Consulting accompagne exclusivement les ESN et sociétés de conseil en technologies dans leurs recrutements. Notre hyperspécialisation du marché nous permet de comprendre parfaitement vos enjeux et de vous proposer les meilleurs talents.",
+  items,
+}: ValuesProps) {
   const { ref, isVisible } = useScrollAnimation()
-  const values = [
+  // Jeux d'icônes et couleurs par défaut
+  const defaultIcons = [Heart, Shield, Target, Users, Award, Zap]
+  const defaultColors = [
+    "from-red-500 to-pink-500",
+    "from-blue-500 to-cyan-500",
+    "from-yellow-500 to-orange-500",
+    "from-green-500 to-teal-500",
+    "from-purple-500 to-indigo-500",
+    "from-amber-500 to-yellow-500",
+  ]
+
+  const defaultValues: Array<ValuesItem> = [
     {
       icon: Heart,
       title: "Proximité",
@@ -43,13 +66,24 @@ export function Values() {
     },
   ]
 
+  // Si des items viennent de Sanity (sans icon/couleur), on assigne par défaut
+  const values: Array<ValuesItem> = (items ?? defaultValues).map((v, index) => {
+    const withDefaults = v as Partial<ValuesItem>
+    return {
+      title: v.title,
+      description: v.description,
+      icon: withDefaults.icon ?? defaultIcons[index % defaultIcons.length],
+      color: withDefaults.color ?? defaultColors[index % defaultColors.length],
+    }
+  })
+
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir NERYTEC ?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Depuis 2005, NERYTEC Consulting accompagne exclusivement les ESN et sociétés de conseil en technologies dans leurs recrutements. Notre hyperspécialisation du marché nous permet de comprendre parfaitement vos enjeux et de vous proposer les meilleurs talents.
+            {description}
           </p>
         </div>
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -66,7 +100,10 @@ export function Values() {
                 <div
                   className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <value.icon className="w-8 h-8 text-white" />
+                  {(() => {
+                    const Icon = value.icon
+                    return <Icon className="w-8 h-8 text-white" />
+                  })()}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{value.description}</p>

@@ -6,11 +6,18 @@ import { Clock, Briefcase, Users, MapPin, Shield, CheckCircle } from "lucide-rea
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { cn } from "@/lib/utils"
 
-export function FAQSection() {
+type FaqItem = { question: string; answer: string }
+type FAQSectionProps = {
+  title?: string
+  subtitle?: string
+  faqs?: FaqItem[]
+}
+
+export function FAQSection({ title, subtitle, faqs: faqsProp }: FAQSectionProps) {
   const { ref, isVisible } = useScrollAnimation()
   const [openIndexes, setOpenIndexes] = useState<number[]>([0])
 
-  const faqs = [
+  const faqs = faqsProp ?? [
     {
       question: "Combien de temps dure votre processus ?",
       icon: Clock,
@@ -62,8 +69,8 @@ export function FAQSection() {
     <section className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Questions Fréquentes</h2>
-          <p className="text-xl text-gray-600">Tout ce que vous devez savoir sur notre processus</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title ?? 'Questions Fréquentes'}</h2>
+          <p className="text-xl text-gray-600">{subtitle ?? 'Tout ce que vous devez savoir sur notre processus'}</p>
         </div>
 
         <div ref={ref} className="space-y-4">
@@ -84,8 +91,11 @@ export function FAQSection() {
                 aria-controls={`faq-content-${index}`}
               >
                 <div className="flex items-center">
-                  <faq.icon className={`w-5 h-5 mr-3 transition-all duration-300 ${faq.color} ${openIndexes.includes(index) ? 'scale-110' : ''
-                    }`} />
+                  {(() => {
+                    const Icon = [Clock, Briefcase, Users, MapPin, Shield, CheckCircle][index % 6]
+                    const color = ["text-blue-600", "text-green-600", "text-purple-600", "text-pink-600", "text-yellow-600", "text-cyan-600"][index % 6]
+                    return <Icon className={`w-5 h-5 mr-3 transition-all duration-300 ${color} ${openIndexes.includes(index) ? 'scale-110' : ''}`} />
+                  })()}
                   <span className="text-lg font-semibold text-gray-900 select-none">
                     {faq.question}
                   </span>
@@ -93,8 +103,7 @@ export function FAQSection() {
                 <span
                   className={`transition-all duration-300 ease-in-out ${openIndexes.includes(index) ? 'rotate-180' : ''}`}
                 >
-                  <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-colors duration-300 ${openIndexes.includes(index) ? faq.color : 'text-gray-400'
-                    }`} />
+                  <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-colors duration-300 ${openIndexes.includes(index) ? 'text-blue-600' : 'text-gray-400'}`} />
                 </span>
               </button>
               <div
@@ -111,17 +120,49 @@ export function FAQSection() {
                       <p className="text-gray-600 leading-relaxed">
                         {faq.question.includes('zones géographiques') ? (
                           (() => {
-                            // On découpe le texte en sections France / International
-                            const [fr, intl] = faq.answer.split(/\n\nInternational :/)
-                            // France
-                            const franceLines = fr.split(/\n/).slice(1).filter(l => l.trim().startsWith('-')).map(l => l.replace('- ', ''))
-                            // International
-                            const intlLines = intl
-                              ? intl.split(/\n/).filter(l => l.trim().startsWith('-')).map(l => l.replace('- ', ''))
-                              : []
-                            // Pays Européens (ligne spéciale)
-                            const europeLine = intlLines.find(l => l.includes('Pays Européens'))
-                            const otherIntl = intlLines.filter(l => !l.includes('Pays Européens'))
+                            // Normalisation des retours chariot et parsing robuste pour le contenu venant de Sanity
+                            const normalized = faq.answer.replace(/\r\n/g, '\n')
+                            // Découpage en sections, tolère espaces et casse
+                            const parts = normalized.split(/\n\n?\s*International\s*:/i)
+                            const franceSection = parts[0] || ''
+                            const internationalSection = parts[1] || ''
+
+                            // Nettoie un préfixe éventuel "France :"
+                            const franceBody = franceSection.replace(/^[\s\S]*?France\s*:\s*/i, '')
+
+                            // Utilise une regex qui supporte '-', '–', '•' comme puces, et espaces variables
+                            const stripBullet = (line: string) => line.replace(/^\s*[-–•]\s?/, '').trim()
+
+                            const franceLines = franceBody
+                              .split(/\n/)
+                              .map(stripBullet)
+                              .filter(Boolean)
+
+                            const intlLinesRaw = internationalSection
+                              .split(/\n/)
+                              .map(stripBullet)
+                              .filter(Boolean)
+
+                            // Lignes spéciale Pays Européens (peut être sur la même ligne que les pays)
+                            const europeIndex = intlLinesRaw.findIndex(l => /Pays\s+Européens/i.test(l))
+                            const europeLine = europeIndex >= 0 ? intlLinesRaw[europeIndex] : undefined
+                            const otherIntl = intlLinesRaw.filter((_, i) => i !== europeIndex)
+
+                            // Si parsing vide (contenu inattendu), fallback affichage brut
+                            const hasAny = franceLines.length > 0 || intlLinesRaw.length > 0
+                            if (!hasAny) {
+                              return (
+                                <>
+                                  {normalized.split('\n').map((line, i) => (
+                                    <span key={i}>
+                                      {line}
+                                      {i !== normalized.split('\n').length - 1 && <br />}
+                                    </span>
+                                  ))}
+                                </>
+                              )
+                            }
+
                             return (
                               <>
                                 <span className="font-medium">France :</span><br />

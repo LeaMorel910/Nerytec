@@ -2,7 +2,12 @@
 import { Phone, Mail, MessageCircle } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
-export function ContactHero() {
+interface ContactHeroProps {
+  subtitle?: string
+  contactFeatures?: { title: string; description: string }[]
+}
+
+export function ContactHero({ subtitle, contactFeatures }: ContactHeroProps) {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
@@ -24,9 +29,9 @@ export function ContactHero() {
       </div>
       <div ref={ref} className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1
-          className={`text-4xl md:text-6xl font-bold text-gray-900 mb-4 leading-normal transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          Parlons de votre
+          <span className="block mb-2">Parlons de votre</span>
           <span className="block bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent pb-2">
             projet ensemble
           </span>
@@ -34,26 +39,41 @@ export function ContactHero() {
         <p
           className={`text-lg text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          Vous recherchez un job ou vous vous posez des questions quant aux choix à faire pour construire votre carrière ?
-          Notre équipe est à votre disposition pour répondre à toutes vos questions
+          {subtitle || "Vous recherchez un job ou vous vous posez des questions quant aux choix à faire pour construire votre carrière ? Notre équipe est à votre disposition pour répondre à toutes vos questions"}
         </p>
         <div
           className={`flex flex-wrap justify-center gap-8 text-gray-500 transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="flex items-center space-x-2 relative group cursor-pointer">
-            <Mail className="w-5 h-5 text-teal-500" />
-            <span className="font-medium">Réponse rapide</span>
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
-              recrutement@nerytec.com
+          {contactFeatures?.map((feature, index) => (
+            <div key={index} className="flex items-center space-x-2 relative group cursor-pointer">
+              {feature.title === "Réponse rapide" ? (
+                <Mail className="w-5 h-5 text-teal-500" />
+              ) : (
+                <Phone className="w-5 h-5 text-teal-500" />
+              )}
+              <span className="font-medium">{feature.title}</span>
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
+                {feature.description}
+              </div>
             </div>
-          </div>
-          <div className="flex items-center space-x-2 relative group cursor-pointer">
-            <Phone className="w-5 h-5 text-teal-500" />
-            <span className="font-medium">Écoute attentive</span>
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
-              0800 123 456
-            </div>
-          </div>
+          )) || (
+              <>
+                <div className="flex items-center space-x-2 relative group cursor-pointer">
+                  <Mail className="w-5 h-5 text-teal-500" />
+                  <span className="font-medium">Réponse rapide</span>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
+                    recrutement@nerytec.com
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2 relative group cursor-pointer">
+                  <Phone className="w-5 h-5 text-teal-500" />
+                  <span className="font-medium">Écoute attentive</span>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50 select-text">
+                    0800 123 456
+                  </div>
+                </div>
+              </>
+            )}
         </div>
       </div>
 

@@ -5,7 +5,14 @@ import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useIsMobile } from "@/hooks/use-mobile"
 
-export function RecruitHero() {
+type RecruitHeroProps = {
+  title?: string
+  showQuestionMark?: boolean
+  subtitle?: string
+  pills?: string[]
+}
+
+export function RecruitHero({ title, showQuestionMark, subtitle, pills }: RecruitHeroProps) {
   const { ref, isVisible } = useScrollAnimation()
   const isMobile = useIsMobile()
 
@@ -49,8 +56,8 @@ export function RecruitHero() {
         <h1
           className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          Vous
-          <span className="block text-[#0078BE]">
+          <span className="block mb-2">Vous</span>
+          <span className="block text-[#0078BE] text-4xl md:text-6xl font-bold pb-2">
             recrutez ?
           </span>
         </h1>
@@ -58,24 +65,20 @@ export function RecruitHero() {
         <p
           className={`text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          Confiez-nous vos recrutements et accédez à notre réseau de talents qualifiés
+          {subtitle ?? 'Confiez-nous vos recrutements et accédez à notre réseau de talents qualifiés'}
         </p>
 
         <div
           className={`flex flex-wrap justify-center gap-8 text-gray-500 transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="flex items-center space-x-2">
-            <Users className="w-5 h-5 text-blue-500" />
-            <span className="font-medium">Réseau qualifié</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Target className="w-5 h-5 text-blue-500" />
-            <span className="font-medium">Matching prédictif</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Award className="w-5 h-5 text-blue-500" />
-            <span className="font-medium">Accompagnement sur-mesure</span>
-          </div>
+          {(pills && pills.length > 0 ? pills : ['Réseau qualifié', 'Matching prédictif', 'Accompagnement sur-mesure']).map((pill, index) => (
+            <div key={index} className="flex items-center space-x-2">
+              {index === 0 && <Users className="w-5 h-5 text-blue-500" />}
+              {index === 1 && <Target className="w-5 h-5 text-blue-500" />}
+              {index === 2 && <Award className="w-5 h-5 text-blue-500" />}
+              <span className="font-medium">{pill}</span>
+            </div>
+          ))}
         </div>
       </div>
       {/* Indicateur de scroll animé - Cliquable */}

@@ -5,7 +5,13 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useIsMobile } from "@/hooks/use-mobile"
 import Link from "next/link"
 
-export function JobsHero() {
+type JobsHeroProps = {
+  pills?: string[]
+  buttonLabel?: string
+  buttonHref?: string
+}
+
+export function JobsHero({ pills, buttonLabel, buttonHref }: JobsHeroProps) {
   const { ref, isVisible } = useScrollAnimation()
   const isMobile = useIsMobile()
 
@@ -60,25 +66,19 @@ export function JobsHero() {
         >
           <div className="flex items-center justify-center md:justify-start space-x-2">
             <Search className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
-            <span className="font-medium text-sm md:text-base">Notre processus</span>
+            <span className="font-medium text-sm md:text-base">{pills?.[0] ?? "Notre processus"}</span>
           </div>
           <div className="flex items-center justify-center md:justify-start space-x-2">
             <Briefcase className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
-            <span className="font-medium text-sm md:text-base text-center md:text-left">
-              Nos opportunités exclusives
-            </span>
+            <span className="font-medium text-sm md:text-base text-center md:text-left">{pills?.[1] ?? "Nos opportunités exclusives"}</span>
           </div>
           <div className="flex items-center justify-center md:justify-start space-x-2">
             <Smile className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
-            <span className="font-medium text-sm md:text-base">
-              Accompagnement individuel personnalisé
-            </span>
+            <span className="font-medium text-sm md:text-base">{pills?.[2] ?? "Accompagnement individuel personnalisé"}</span>
           </div>
           <div className="flex items-center justify-center md:justify-start space-x-2">
             <TrendingUp className="w-5 h-5 text-[#0078BE] flex-shrink-0" />
-            <span className="font-medium text-sm md:text-base">
-              Opportunités d'actionnariat et de prise de participation
-            </span>
+            <span className="font-medium text-sm md:text-base">{pills?.[3] ?? "Opportunités d'actionnariat et de prise de participation"}</span>
           </div>
         </div>
 
@@ -87,8 +87,8 @@ export function JobsHero() {
           className={`bg-[#0078BE] text-white px-8 py-4 text-lg font-semibold shadow-2xl transition-all duration-300 animate-pulse-glow backdrop-blur-sm ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} hover:bg-[#006bb0] hover:shadow-[0_0_32px_8px_rgba(0,120,190,0.35)] hover:scale-105 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0078BE]`}
           style={{ transition: 'background 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)' }}
         >
-          <Link href="/contact">
-            Nous écrire en toute discrétion
+          <Link href={buttonHref ?? "/contact"}>
+            {buttonLabel ?? "Nous écrire en toute discrétion"}
           </Link>
         </Button>
       </div>

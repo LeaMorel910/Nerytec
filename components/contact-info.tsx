@@ -2,24 +2,34 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
-export function ContactInfo() {
+interface ContactInfoProps {
+  contactInfo?: {
+    address?: string
+    email?: string
+    responseTime?: string
+    hours?: string
+    days?: string
+  }
+}
+
+export function ContactInfo({ contactInfo }: ContactInfoProps) {
   const { ref, isVisible } = useScrollAnimation()
 
   const contactDetails = [
     {
       icon: MapPin,
       title: "Adresse",
-      details: ["34 boulevard des italiens 75009"],
+      details: [contactInfo?.address || "34 boulevard des italiens 75009"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["recrutement@nerytec.com", "Réponse sous 24h"],
+      details: [contactInfo?.email || "recrutement@nerytec.com", contactInfo?.responseTime || "Réponse sous 24h"],
     },
     {
       icon: Clock,
       title: "Horaires",
-      details: ["8h00 - 20h00", "Lundi au Vendredi"],
+      details: [contactInfo?.hours || "8h00 - 20h00", contactInfo?.days || "Lundi au Vendredi"],
     },
   ]
 

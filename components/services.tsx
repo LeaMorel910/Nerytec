@@ -6,16 +6,25 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-export function Services() {
-  const { ref, isVisible } = useScrollAnimation()
-  const services = [
+interface Service {
+  title: string
+  features: string[]
+}
+
+interface ServicesProps {
+  title?: string
+  subtitle?: string
+  services?: Service[]
+  buttonText?: string
+  buttonLink?: string
+}
+
+export function Services({
+  title = "Nerytec Consulting",
+  subtitle = "Le partenaire incontournable des ESN et des sociétés de conseil en ingénierie. Le partenaire incontournable pour booster votre carrière.",
+  services = [
     {
-      icon: Users,
-      title: (
-        <>
-          Management/ Direction <br /> Commercial (H/F)
-        </>
-      ),
+      title: "Management/ Direction Commercial (H/F)",
       features: [
         "Directeur commercial",
         "Global Account Manager",
@@ -25,12 +34,7 @@ export function Services() {
       ],
     },
     {
-      icon: Users,
-      title: (
-        <>
-          Direction Générale (H/F) <br /> &nbsp;
-        </>
-      ),
+      title: "Direction Générale (H/F)",
       features: [
         "Directeur Général",
         "Directeur des opérations",
@@ -38,12 +42,7 @@ export function Services() {
       ],
     },
     {
-      icon: Users,
-      title: (
-        <>
-          Direction Technique – <br /> opérationnelle (H/F)
-        </>
-      ),
+      title: "Direction Technique – opérationnelle (H/F)",
       features: [
         "Directeur des engagements",
         "Directeur de projet",
@@ -53,12 +52,7 @@ export function Services() {
       ],
     },
     {
-      icon: Users,
-      title: (
-        <>
-          Ressources Humaines (H/F)
-        </>
-      ),
+      title: "Ressources Humaines (H/F)",
       features: [
         "Directeur des Ressources Humaines",
         "Responsable des Ressources Humaines",
@@ -66,17 +60,21 @@ export function Services() {
         "Ressource manager"
       ],
     },
-  ]
+  ],
+  buttonText = "Découvrir Nos Opportunités Exclusives",
+  buttonLink = "/jobs#contact-form"
+}: ServicesProps) {
+  const { ref, isVisible } = useScrollAnimation()
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Nerytec Consulting
+            {title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
-            Le partenaire incontournable des ESN et des sociétés de conseil en ingénierie. Le partenaire incontournable pour booster votre carrière.
+            {subtitle}
           </p>
         </div>
 
@@ -99,7 +97,7 @@ export function Services() {
               >
                 <CardHeader className="pb-3 sm:pb-4">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#0078BE] rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                    <Users className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </div>
                   <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 leading-tight">
                     {service.title}
@@ -124,12 +122,12 @@ export function Services() {
 
         {/* Button responsive */}
         <div className="flex justify-center mt-8 sm:mt-10 lg:mt-12 px-4">
-          <Link href="/jobs#contact-form">
+          <Link href={buttonLink || "/jobs#contact-form"}>
             <Button
               size="lg"
               className="bg-[#0078BE] hover:bg-[#006bb0] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full sm:w-auto text-sm sm:text-base max-w-sm sm:max-w-none"
             >
-              Découvrir Nos Opportunités Exclusives
+              {buttonText}
             </Button>
           </Link>
         </div>

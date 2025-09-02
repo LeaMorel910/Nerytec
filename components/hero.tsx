@@ -5,7 +5,31 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 
-export function Hero() {
+interface HeroProps {
+  title?: string
+  subtitle?: string
+  description?: string
+  button1Text?: string
+  button1Link?: string
+  button2Text?: string
+  button2Link?: string
+  trustIndicators?: Array<{ text: string }>
+}
+
+export function Hero({
+  title = "NERYTEC CONSULTING",
+  subtitle = "Une expertise reconnue dans le secteur du conseil – ESN & SCT",
+  description = "Cabinet de recrutement nouvelle génération",
+  button1Text = "Je veux un job de rêve !",
+  button1Link = "/jobs",
+  button2Text = "Je veux une pépite !",
+  button2Link = "/recruit",
+  trustIndicators = [
+    { text: "500+ recrutement réussis" },
+    { text: "100+ entreprises partenaires" },
+    { text: "96% de satisfaction client" }
+  ]
+}: HeroProps) {
   const [isAnimationReady, setIsAnimationReady] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -148,30 +172,46 @@ export function Hero() {
         {/* Conteneur avec fond semi-transparent pour le texte principal */}
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-8 border border-white/20 mt-6 sm:mt-12 animate-fade-in-up animate-fade-in-up-stagger-1 mobile-box">
           <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-gray-900 mb-0 leading-tight drop-shadow-lg">
-            <span className="text-[#0078BE] drop-shadow-2xl">NERYTEC</span> <span className="font-normal text-white">CONSULTING</span>
-            <span className="block text-white pb-6 drop-shadow-md">
-              Une expertise reconnue dans le secteur du conseil – ESN & SCT
-            </span>
-            <span className="block text-gray-50 text-xl font-light italic">
-              Cabinet de recrutement nouvelle génération
-            </span>
+            {(() => {
+              const words = (title || "").split(" ")
+              const lastWord = words.pop() || ""
+              const firstPart = words.join(" ")
+              return (
+                <>
+                  {firstPart && (
+                    <span className="text-[#0078BE] drop-shadow-2xl">{firstPart} </span>
+                  )}
+                  <span className="text-white drop-shadow-2xl font-normal">{lastWord}</span>
+                </>
+              )
+            })()}
+            {subtitle && (
+              <span className="block text-white pb-6 drop-shadow-md ">
+                {subtitle}
+              </span>
+            )}
+            {description && (
+              <span className="block text-gray-50 text-xl font-light italic">
+                {description}
+              </span>
+            )}
           </h1>
         </div>
 
         <div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up animate-fade-in-up-stagger-2"
         >
-          <Link href="/jobs">
+          <Link href={button1Link || "/jobs"}>
             <Button
               size="lg"
               className="bg-[#0078BE] hover:bg-[#006bb0] text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0078BE]"
               style={{ transition: 'background 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)' }}
             >
               <Briefcase className="w-5 h-5 mr-2" />
-              Je veux un job de rêve !
+              {button1Text}
             </Button>
           </Link>
-          <Link href="/recruit">
+          <Link href={button2Link || "/recruit"}>
             <Button
               size="lg"
               variant="outline"
@@ -179,28 +219,24 @@ export function Hero() {
               style={{ transition: 'background 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1)' }}
             >
               <Lightbulb className="w-5 h-5 mr-2" />
-              Je veux une pépite !
+              {button2Text}
             </Button>
           </Link>
         </div>
 
         {/* Trust indicators avec fond semi-transparent */}
-        <div
-          className="flex flex-wrap justify-center items-center gap-8 text-white animate-fade-in-up animate-fade-in-up-stagger-3 bg-black/20 backdrop-blur-sm rounded-2xl p-4 border border-white/10 mb-6 sm:mb-12 mobile-box"
-        >
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />
-            <span className="text-sm font-medium drop-shadow-md">500+ recrutement réussis</span>
+        {trustIndicators && trustIndicators.length > 0 && (
+          <div
+            className="flex flex-wrap justify-center items-center gap-8 text-white animate-fade-in-up animate-fade-in-up-stagger-3 bg-black/20 backdrop-blur-sm rounded-2xl p-4 border border-white/10 mb-6 sm:mb-12 mobile-box"
+          >
+            {trustIndicators.map((indicator, index) => (
+              <div key={index} className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />
+                <span className="text-sm font-medium drop-shadow-md">{indicator.text}</span>
+              </div>
+            ))}
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />
-            <span className="text-sm font-medium drop-shadow-md">100+ entreprises partenaires</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-[#0078BE] rounded-full pulse-dot shadow-lg" />
-            <span className="text-sm font-medium drop-shadow-md">96% de satisfaction client</span>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   )

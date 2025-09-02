@@ -4,7 +4,23 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import Link from "next/link"
 
-export function RecruitCTA() {
+type RecruitCTAProps = {
+  title?: string
+  subtitle?: string
+  emailCardTitle?: string
+  emailCardText?: string
+  contactCardTitle?: string
+  contactCardText?: string
+}
+
+export function RecruitCTA({
+  title,
+  subtitle,
+  emailCardTitle,
+  emailCardText,
+  contactCardTitle,
+  contactCardText
+}: RecruitCTAProps) {
   const { ref, isVisible } = useScrollAnimation()
 
   const handleEmailClick = () => {
@@ -19,10 +35,10 @@ export function RecruitCTA() {
           className={`text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Prêt à démarrer votre recrutement ?
+            {title ?? "Prêt à démarrer votre recrutement ?"}
           </h2>
           <p className="text-xl text-blue-100 mb-8 md:mb-12 max-w-2xl mx-auto">
-            Contactez-nous dès aujourd'hui pour discuter de vos besoins en recrutement
+            {subtitle ?? "Contactez-nous dès aujourd'hui pour discuter de vos besoins en recrutement"}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {/* Email Card */}
@@ -35,8 +51,8 @@ export function RecruitCTA() {
             >
               <CardContent className="p-6 text-center h-full flex flex-col justify-center">
                 <Mail className="w-8 h-8 text-blue-300 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg font-semibold text-white mb-2">Écrivez-nous</h3>
-                <p className="text-blue-100 text-sm">recrutement@nerytec.com</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{emailCardTitle ?? "Écrivez-nous"}</h3>
+                <p className="text-blue-100 text-sm">{emailCardText ?? "recrutement@nerytec.com"}</p>
               </CardContent>
             </Card>
             {/* Contact Form Card */}
@@ -44,8 +60,8 @@ export function RecruitCTA() {
               <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer group h-full">
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">
                   <Phone className="w-8 h-8 text-blue-300 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-lg font-semibold text-white mb-2">Contactez-nous</h3>
-                  <p className="text-blue-100 text-sm">Accéder au formulaire</p>
+                  <h3 className="text-lg font-semibold text-white mb-2">{contactCardTitle ?? "Contactez-nous"}</h3>
+                  <p className="text-blue-100 text-sm">{contactCardText ?? "Accéder au formulaire"}</p>
                 </CardContent>
               </Card>
             </Link>

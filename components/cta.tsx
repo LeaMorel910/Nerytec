@@ -3,7 +3,27 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 
-export function CTA() {
+interface CTAProps {
+  title?: string
+  description?: string
+  candidatTitle?: string
+  candidatDescription?: string
+  candidatButtonText?: string
+  recruteurTitle?: string
+  recruteurDescription?: string
+  recruteurButtonText?: string
+}
+
+export function CTA({
+  title = "Prêt à faire le prochain pas ?",
+  description = "Que vous soyez un candidat ou une entreprise, nous sommes là pour vous accompagner",
+  candidatTitle = "Vous êtes candidat ?",
+  candidatDescription = "Découvrez nos opportunités exclusives et bénéficiez d'un accompagnement personnalisé dans votre recherche d'emploi.",
+  candidatButtonText = "Voir les opportunités",
+  recruteurTitle = "Vous recrutez ?",
+  recruteurDescription = "Confiez-nous vos recrutements et accédez à notre réseau de talents.",
+  recruteurButtonText = "Nous contacter"
+}: CTAProps) {
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-[#0078BE] relative overflow-hidden">
       {/* Background decoration - adaptées pour mobile */}
@@ -15,10 +35,10 @@ export function CTA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 px-2">
-            Prêt à faire le prochain pas ?
+            {title}
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-blue-100 mb-8 sm:mb-12 max-w-2xl mx-auto px-2 leading-relaxed">
-            Que vous soyez un candidat ou une entreprise, nous sommes là pour vous accompagner
+            {description}
           </p>
         </div>
 
@@ -30,18 +50,17 @@ export function CTA() {
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                Vous êtes candidat ?
+                {candidatTitle}
               </h3>
               <p className="text-sm sm:text-base text-blue-100 mb-4 sm:mb-6 leading-relaxed min-h-[60px] sm:min-h-[72px]">
-                Découvrez nos opportunités exclusives et bénéficiez d'un accompagnement personnalisé dans votre
-                recherche d'emploi.
+                {candidatDescription}
               </p>
               <Link href="/jobs">
                 <Button
                   size="lg"
                   className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300 text-sm sm:text-base py-3 sm:py-4"
                 >
-                  Voir les opportunités
+                  {candidatButtonText}
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
               </Link>
@@ -55,17 +74,17 @@ export function CTA() {
                 <Building className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                Vous recrutez ?
+                {recruteurTitle}
               </h3>
               <p className="text-sm sm:text-base text-blue-100 mb-4 sm:mb-6 leading-relaxed min-h-[60px] sm:min-h-[72px]">
-                Confiez-nous vos recrutements et accédez à notre réseau de talents.
+                {recruteurDescription}
               </p>
               <Link href="/recruit">
                 <Button
                   size="lg"
                   className="bg-white text-blue-900 hover:bg-blue-50 w-full group-hover:shadow-lg transition-all duration-300 text-sm sm:text-base py-3 sm:py-4"
                 >
-                  Nous contacter
+                  {recruteurButtonText}
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
               </Link>

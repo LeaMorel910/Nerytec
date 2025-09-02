@@ -9,7 +9,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import React from "react"
 
-export function ContactForm() {
+interface ContactFormProps {
+  buttonText?: string
+}
+
+export function ContactForm({ buttonText }: ContactFormProps) {
   const { ref, isVisible } = useScrollAnimation()
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
 
@@ -59,7 +63,7 @@ export function ContactForm() {
 
   const searchParams = useSearchParams();
   type ContactType = "cv" | "actionnariat" | "coaching" | null;
-  const typeParam = searchParams.get("type");
+  const typeParam = searchParams?.get("type");
   const type: ContactType =
     typeParam === "actionnariat" || typeParam === "coaching" || typeParam === "cv" ? typeParam : null;
 
@@ -188,7 +192,7 @@ export function ContactForm() {
               disabled={status === "sending"}
             >
               <Send className="w-5 h-5 mr-2" />
-              {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
+              {status === "sending" ? "Envoi en cours..." : (buttonText || "Envoyer le message")}
             </Button>
             {status === "success" && (
               <p className="text-green-600 text-center font-semibold mt-2">

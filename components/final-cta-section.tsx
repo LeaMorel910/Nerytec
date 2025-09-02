@@ -6,7 +6,15 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import Link from "next/link"
 import React, { useEffect, useState } from "react"
 
-export function FinalCtaSection() {
+type StatItem = { number: string; label: string }
+type FinalCtaSectionProps = {
+    title?: string
+    subtitle?: string
+    stats?: StatItem[]
+    note?: string
+}
+
+export function FinalCtaSection({ title, subtitle, stats, note }: FinalCtaSectionProps) {
     const { ref, isVisible } = useScrollAnimation()
     const [stars, setStars] = useState<{ top: number, left: number, delay: number }[]>([])
 
@@ -52,28 +60,22 @@ export function FinalCtaSection() {
                         <Rocket className="w-16 h-16 text-white mx-auto mb-6 animate-bounce" />
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                        Prêt à donner un nouvel élan à votre carrière ?
-                    </h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{title ?? "Prêt à donner un nouvel élan à votre carrière ?"}</h2>
 
-                    <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-                        Bénéficiez de notre expertise ESN/SSII et de notre approche prédictive unique
-                    </p>
+                    <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">{subtitle ?? "Bénéficiez de notre expertise ESN/SSII et de notre approche prédictive unique"}</p>
 
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-8">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                            <div>
-                                <div className="text-3xl font-bold text-white mb-2">20+</div>
-                                <div className="text-blue-100">Années d'expertise</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-white mb-2">500+</div>
-                                <div className="text-blue-100">Placements réussis</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-white mb-2">96%</div>
-                                <div className="text-blue-100">Taux de satisfaction</div>
-                            </div>
+                            {(stats && stats.length > 0 ? stats : [
+                                { number: '20+', label: "Années d'expertise" },
+                                { number: '500+', label: 'Placements réussis' },
+                                { number: '96%', label: 'Taux de satisfaction' },
+                            ]).slice(0, 3).map((s, i) => (
+                                <div key={i}>
+                                    <div className="text-3xl font-bold text-white mb-2">{s.number}</div>
+                                    <div className="text-blue-100">{s.label}</div>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
@@ -91,9 +93,7 @@ export function FinalCtaSection() {
                         </Button>
                     </Link>
 
-                    <p className="text-blue-100 text-sm mt-4">
-                        🎉 Rappel : 500€ offerts quand nous vous trouvons votre job de rêve !
-                    </p>
+                    <p className="text-blue-100 text-sm mt-4">{note ?? "🎉 Rappel : 500€ offerts quand nous vous trouvons votre job de rêve !"}</p>
                     <Link href="/gift-cards" passHref legacyBehavior>
                         <a className="block mt-2 text-blue-100 text-sm italic underline hover:text-white transition-colors duration-200">
                             En chèque cadeau de votre choix - conditions fournies sur demande

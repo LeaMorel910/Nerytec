@@ -4,11 +4,21 @@ import React from "react"
 import { motion, AnimatePresence, easeOut } from "framer-motion"
 import Link from "next/link"
 
-export function Offres() {
+type Job = { title: string; description: string }
+type Category = { id: string; label: string; jobs: Job[] }
+type Cta = { title: string; description?: string; buttonText?: string; href?: string }
+type OffresProps = {
+  title?: string
+  subtitle?: string
+  categories?: Category[]
+  ctas?: Cta[]
+}
+
+export function Offres({ title, subtitle, categories: categoriesProp, ctas }: OffresProps) {
   const { ref, isVisible } = useScrollAnimation()
   const [selectedCategory, setSelectedCategory] = React.useState('management')
 
-  const categories = [
+  const categories = categoriesProp ?? [
     {
       id: 'management',
       label: 'Management/Direction Commercial (H/F)',
@@ -168,12 +178,8 @@ export function Offres() {
     <section id="contact-form" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            Nos Opportunités Exclusives
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Découvrez des opportunités uniques pour booster votre carrière
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">{title ?? 'Nos Opportunités Exclusives'}</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">{subtitle ?? 'Découvrez des opportunités uniques pour booster votre carrière'}</p>
 
           {/* Sélecteur de catégories */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -194,29 +200,43 @@ export function Offres() {
         <Option1 />
         {/* Bloc de boutons d'action */}
         <div className="mt-16 flex flex-col md:flex-row gap-6 items-stretch justify-center">
-          {/* Bouton 1 */}
-          <Link
-            href="/contact?type=cv#contact-form"
-            className="flex-1 group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col items-center justify-center px-8 py-6 text-center cursor-pointer hover:bg-blue-50"
-          >
-            <span className="font-bold text-gray-900 text-lg mb-1 group-hover:text-blue-700 transition-colors">Envoyer votre CV</span>
-          </Link>
-          {/* Bouton 2 */}
-          <Link
-            href="/contact?type=actionnariat#contact-form"
-            className="flex-1 group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col items-center justify-center px-8 py-6 text-center cursor-pointer hover:bg-blue-50"
-          >
-            <span className="font-bold text-gray-900 text-lg mb-1 group-hover:text-blue-700 transition-colors">Actionnariat & Participation</span>
-            <span className="text-gray-600 text-sm mt-2">Vous êtes un dirigeant et souhaitez prendre une participation avec des partenaires financiers ? Écrivez-nous en toute confidentialité</span>
-          </Link>
-          {/* Bouton 3 */}
-          <Link
-            href="/contact?type=coaching#contact-form"
-            className="flex-1 group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col items-center justify-center px-8 py-6 text-center cursor-pointer hover:bg-blue-50"
-          >
-            <span className="font-bold text-gray-900 text-lg mb-1 group-hover:text-blue-700 transition-colors">Accompagnement & Coaching</span>
-            <span className="text-gray-600 text-sm mt-2">Boostez votre carrière avec l'appui d'un professionnel en réussite dans ces métiers</span>
-          </Link>
+          {ctas && ctas.length > 0 ? (
+            ctas.slice(0, 3).map((cta, idx) => (
+              <Link
+                key={idx}
+                href={cta.href ?? "/contact#contact-form"}
+                className="flex-1 group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col items-center justify-center px-8 py-6 text-center cursor-pointer hover:bg-blue-50"
+              >
+                <span className="font-bold text-gray-900 text-lg mb-1 group-hover:text-blue-700 transition-colors">{cta.buttonText ?? cta.title}</span>
+                {cta.description && (
+                  <span className="text-gray-600 text-sm mt-2">{cta.description}</span>
+                )}
+              </Link>
+            ))
+          ) : (
+            <>
+              <Link
+                href="/contact?type=cv#contact-form"
+                className="flex-1 group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col items-center justify-center px-8 py-6 text-center cursor-pointer hover:bg-blue-50"
+              >
+                <span className="font-bold text-gray-900 text-lg mb-1 group-hover:text-blue-700 transition-colors">Envoyer votre CV</span>
+              </Link>
+              <Link
+                href="/contact?type=actionnariat#contact-form"
+                className="flex-1 group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col items-center justify-center px-8 py-6 text-center cursor-pointer hover:bg-blue-50"
+              >
+                <span className="font-bold text-gray-900 text-lg mb-1 group-hover:text-blue-700 transition-colors">Actionnariat & Participation</span>
+                <span className="text-gray-600 text-sm mt-2">Vous êtes un dirigeant et souhaitez prendre une participation avec des partenaires financiers ? Écrivez-nous en toute confidentialité</span>
+              </Link>
+              <Link
+                href="/contact?type=coaching#contact-form"
+                className="flex-1 group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col items-center justify-center px-8 py-6 text-center cursor-pointer hover:bg-blue-50"
+              >
+                <span className="font-bold text-gray-900 text-lg mb-1 group-hover:text-blue-700 transition-colors">Accompagnement & Coaching</span>
+                <span className="text-gray-600 text-sm mt-2">Boostez votre carrière avec l'appui d'un professionnel en réussite dans ces métiers</span>
+              </Link>
+            </>
+          )}
         </div>
       </div>
 

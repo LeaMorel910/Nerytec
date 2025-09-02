@@ -3,11 +3,18 @@ import { MessageCircle, Search, Users, CheckCircle } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useState } from "react"
 
-export function RecruitProcess() {
+type ProcessStep = { step: string; title: string; description: string }
+type RecruitProcessProps = {
+  title?: string
+  subtitle?: string
+  steps?: ProcessStep[]
+}
+
+export function RecruitProcess({ title, subtitle, steps: stepsProp }: RecruitProcessProps) {
   const { ref, isVisible } = useScrollAnimation()
   const [current, setCurrent] = useState(0)
 
-  const steps = [
+  const defaultSteps = [
     {
       icon: MessageCircle,
       title: "Analyse du besoin",
@@ -34,6 +41,15 @@ export function RecruitProcess() {
     },
   ]
 
+  const steps = stepsProp && stepsProp.length > 0
+    ? stepsProp.map((s, idx) => ({
+      icon: [MessageCircle, Search, Users, CheckCircle][idx % 4],
+      title: s.title,
+      description: s.description,
+      step: s.step,
+    }))
+    : defaultSteps
+
   // Fonctions pour le carrousel mobile
   const prevStep = () => setCurrent((prev) => (prev === 0 ? steps.length - 1 : prev - 1))
   const nextStep = () => setCurrent((prev) => (prev === steps.length - 1 ? 0 : prev + 1))
@@ -45,8 +61,8 @@ export function RecruitProcess() {
     <section className="py-6 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-4">Notre processus</h2>
-          <p className="text-base md:text-xl text-gray-600">Une méthode éprouvée pour vos recrutements</p>
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-4">{title ?? "Notre processus"}</h2>
+          <p className="text-base md:text-xl text-gray-600">{subtitle ?? "Une méthode éprouvée pour vos recrutements"}</p>
         </div>
 
         {/* Carrousel mobile */}

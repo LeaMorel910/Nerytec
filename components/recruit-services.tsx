@@ -3,10 +3,17 @@ import { Target, Clock, Shield } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
-export function RecruitServices() {
+type Service = { title: string; description: string; features: string[] }
+type RecruitServicesProps = {
+  title?: string
+  subtitle?: string
+  services?: Service[]
+}
+
+export function RecruitServices({ title, subtitle, services: servicesProp }: RecruitServicesProps) {
   const { ref, isVisible } = useScrollAnimation()
 
-  const services = [
+  const defaultServices = [
     {
       icon: Target,
       title: "Recrutement sur mesure",
@@ -39,12 +46,25 @@ export function RecruitServices() {
     },
   ]
 
+  const services = servicesProp && servicesProp.length > 0
+    ? servicesProp.map((s, idx) => ({
+      icon: [Target, Clock, Shield][idx % 3],
+      title: s.title,
+      description: s.description,
+      features: s.features,
+      color: ["#0078BE", "#F59E42", "#10B981"][idx % 3],
+      iconBg: ["bg-gradient-to-tr from-blue-500 to-cyan-400", "bg-gradient-to-tr from-orange-400 to-yellow-300", "bg-gradient-to-tr from-green-500 to-emerald-400"][idx % 3],
+      bullet: ["bg-blue-500", "bg-orange-400", "bg-green-500"][idx % 3],
+      titleColor: ["text-blue-700", "text-orange-600", "text-green-700"][idx % 3],
+    }))
+    : defaultServices
+
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos services</h2>
-          <p className="text-xl text-gray-600">Une offre complète pour vos recrutements</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title ?? "Nos services"}</h2>
+          <p className="text-xl text-gray-600">{subtitle ?? "Une offre complète pour vos recrutements"}</p>
         </div>
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
