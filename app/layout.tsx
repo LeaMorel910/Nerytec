@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import ClientLayout from "./ClientLayout"
+//import ClientLayout from "./ClientLayout"
 import { SanityLive } from "@/sanity/lib/live"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -24,7 +24,8 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
       <body className={inter.className}>
-        <ClientLayout>{children}</ClientLayout>
+        {/*<ClientLayout>{children}</ClientLayout>*/}
+        {children}
         <SanityLive />
       </body>
     </html>
