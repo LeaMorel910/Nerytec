@@ -255,7 +255,11 @@ export default async function HomePage() {
       </AnimatedSection>
 
       <AnimatedSection delay={100}>
-        <Testimonials />
+        <Testimonials
+          title={safeValue(data.testimonialsTitle, "Ce que disent nos candidats – Nos clients")}
+          subtitle={safeValue(data.testimonialsSubtitle, "La satisfaction de nos clients et nos candidats est notre priorité")}
+          testimonials={safeValue(data.testimonials, undefined)}
+        />
       </AnimatedSection>
 
       <CTA
