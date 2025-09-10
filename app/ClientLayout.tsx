@@ -1,9 +1,9 @@
-// "use client"
-// import type React from "react"
+"use client"
+import type React from "react"
 // import { useState, useEffect } from "react"
 // import { Inter } from "next/font/google"
 // import "./globals.css"
-// import { PageTransition } from "@/components/page-transition"
+import { PageTransition } from "@/components/page-transition"
 // import Link from "next/link"
 
 // const inter = Inter({ subsets: ["latin"] })
@@ -145,15 +145,15 @@
 //   )
 // }
 
-// export default function ClientLayout({
-//   children,
-// }: {
-//   children: React.ReactNode
-// }) {
-//   return (
-//     <>
-//       <PageTransition>{children}</PageTransition>
-//       <PromotionalBanner />
-//     </>
-//   )
-// }
+export default function ClientLayout({
+    children,
+}: {
+    children: React.ReactNode
+}) {
+    return (
+        <>
+            <PageTransition>{children}</PageTransition>
+            {/* <PromotionalBanner /> */}
+        </>
+    )
+}
