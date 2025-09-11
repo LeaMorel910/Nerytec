@@ -20,7 +20,7 @@ export function ContactForm({ buttonText }: ContactFormProps) {
   const formRef = React.useRef<HTMLFormElement>(null)
 
   // Code sécurisé Formsubmit (ou gardez votre email)
-  const YOUR_EMAIL = "lea@nerytec.com"
+  const YOUR_EMAIL = "d5ac3e391f8daef8100d722652038af9"
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
