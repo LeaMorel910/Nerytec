@@ -19,7 +19,7 @@ export function ContactForm({ buttonText }: ContactFormProps) {
 
   const formRef = React.useRef<HTMLFormElement>(null)
 
-  // Code sécurisé Formsubmit (ou gardez votre email)
+  // Hash Formsubmit.co
   const YOUR_EMAIL = "d5ac3e391f8daef8100d722652038af9"
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,12 +29,18 @@ export function ContactForm({ buttonText }: ContactFormProps) {
     const form = e.target as HTMLFormElement
     const formData = new FormData(form)
 
-    // Ajouter les paramètres Formsubmit.co
-    const isProduction = typeof window !== 'undefined' && !window.location.hostname.includes('localhost')
-    formData.append('_template', 'table') // Format HTML propre
-    formData.append('_subject', `Nouveau message du site web: ${formData.get('subject')}`)
-    formData.append('_captcha', isProduction ? 'true' : 'false') // Captcha seulement en production
-    formData.append('_autoresponse', 'Merci pour votre message, nous vous répondrons rapidement !') // Message automatique à l'expéditeur
+    // Configuration Formsubmit.co optimisée
+    formData.append('_template', 'table')
+    formData.append('_subject', `Nouveau message du site web: ${formData.get('subject') || 'Contact'}`)
+
+    // ✅ URL fixe pour éviter les réactivations constantes
+    formData.append('_next', 'https://www.nerytec.com/contact?success=true')
+
+    // Captcha désactivé temporairement pour éviter les problèmes
+    formData.append('_captcha', 'false')
+
+    // Message automatique à l'expéditeur
+    formData.append('_autoresponse', 'Merci pour votre message, nous vous répondrons rapidement !')
 
     try {
       const res = await fetch(`https://formsubmit.co/${YOUR_EMAIL}`, {
@@ -42,18 +48,20 @@ export function ContactForm({ buttonText }: ContactFormProps) {
         body: formData,
       })
 
-      // Formsubmit.co redirige après succès, donc on ne peut pas vérifier res.ok
-      // Si on arrive ici sans exception, c'est que l'envoi a fonctionné
+      // Log pour débugger
+      console.log('Response status:', res.status)
+
+      // Formsubmit.co redirige après succès
       setStatus("success")
       form.reset()
-      // Réinitialiser l'état du checkbox
       setShowCVUpload(false)
 
     } catch (error) {
       console.log("Erreur lors de l'envoi:", error)
-      // Même en cas d'"erreur", le message peut être envoyé
+
       // Formsubmit.co cause souvent des erreurs CORS mais envoie quand même
-      setStatus("success") // On considère comme un succès
+      // Pour débugger, changez temporairement en "error" si vous voulez voir les vraies erreurs
+      setStatus("success")
       form.reset()
       setShowCVUpload(false)
     }
@@ -179,8 +187,9 @@ export function ContactForm({ buttonText }: ContactFormProps) {
               </div>
             )}
 
-            {/* Champs cachés pour Formsubmit.co */}
+            {/* ❌ SUPPRIMÉ : Champ _next dynamique qui causait les réactivations
             <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
+            */}
 
             {/* Honeypot anti-spam */}
             <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
